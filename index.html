@@ -14,10 +14,11 @@ h1{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 16px;
 #stats{display:flex;border:1px solid var(--ln);margin-bottom:16px}
 #stats div{flex:1;padding:10px 12px;font-size:12px;color:var(--mu);border-right:1px solid var(--ln)}
 #stats div:last-child{border:0}
-#stats b{display:block;font-size:20px;color:var(--fg)}
-nav{display:flex;gap:0;margin-bottom:20px;border:1px solid var(--ln)}
-button{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--ln);padding:8px 14px;cursor:pointer}
-nav button{flex:1;border:0;border-right:1px solid var(--ln);font-size:13px}
+#stats b{display:block;font-size:18px;color:var(--fg)}
+nav{display:flex;gap:0;margin-bottom:20px;border:1px solid var(--ln);overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+button{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--ln);padding:8px 12px;cursor:pointer}
+nav button{flex:1;min-width:fit-content;border:0;border-right:1px solid var(--ln);font-size:13px;white-space:nowrap}
 nav button:last-child{border:0}
 button:disabled{opacity:.4;cursor:default}
 button.on{background:var(--fg);color:var(--bg)}
@@ -38,17 +39,52 @@ th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);f
 .pl{display:flex;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--ln);padding:10px 0}
 .pl span:first-child{width:96px;flex:none}.pl span:nth-child(2){width:18px;flex:none}.pl span:last-child{color:var(--mu);font-size:13px}
 input[type=number]{width:64px;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--ln);padding:4px 6px}
+input[type=text]{width:100%;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--ln);padding:6px 8px;margin-bottom:8px}
 input[type=checkbox]{width:18px;height:18px;accent-color:var(--fg)}
+
+/* GitHub Monochrome Streak Heatmap Grid */
+.gh-wrap{border:1px solid var(--ln);padding:14px;margin-bottom:20px}
+.gh-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:12px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.gh-months{display:grid;grid-template-columns:repeat(8, 1fr);font-size:11px;color:var(--mu);margin-bottom:6px;padding-left:22px}
+.gh-body{display:flex;gap:6px}
+.gh-days-lbl{display:flex;flex-direction:column;justify-content:space-between;font-size:10px;color:var(--mu);line-height:16px;width:16px}
+.gh-grid{display:grid;grid-template-columns:repeat(8, 1fr);grid-template-rows:repeat(7, 16px);gap:4px;flex:1}
+.gh-cell{width:100%;height:16px;border:1px solid var(--ln);cursor:pointer;position:relative;transition:transform .1s}
+.gh-cell:hover{transform:scale(1.2);z-index:2}
+.gh-cell.c-empty{opacity:.2;background:transparent}
+.gh-cell.c-missed{border-style:dashed;opacity:.55;background:transparent}
+.gh-cell.c-missed::after{content:'✕';position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--mu)}
+.gh-cell.c-partial{background:var(--mu);opacity:.6}
+.gh-cell.c-done{background:var(--fg);color:var(--bg)}
+.gh-legend{display:flex;justify-content:flex-end;align-items:center;gap:5px;font-size:11px;color:var(--mu);margin-top:10px}
+.gh-leg-box{width:12px;height:12px;border:1px solid var(--ln);display:inline-block}
+
+/* Gamification Badges & Level Progress */
+.lvl-card{border:1px solid var(--ln);padding:12px;margin-bottom:16px}
+.lvl-bar-bg{height:8px;border:1px solid var(--ln);margin-top:6px;background:transparent;position:relative}
+.lvl-bar-fill{height:100%;background:var(--fg);transition:width .3s}
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));gap:8px;margin-top:12px}
+.badge-box{border:1px solid var(--ln);padding:8px 10px;font-size:13px;display:flex;align-items:center;gap:8px}
+.badge-box.locked{opacity:.35;border-style:dashed}
+.badge-icon{font-size:18px}
+.rw-item{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ln);padding:8px 0;font-size:14px}
 </style></head><body><div id="app">
 <h1>CAT 2026 / Catch-up plan</h1>
 <div id="stats"></div>
-<nav><button data-v="today">Today</button><button data-v="plan">Plan</button><button data-v="bl">Backlog</button><button data-v="mocks">Mocks</button><button data-v="why">Why</button></nav>
+<nav>
+  <button data-v="today">Today</button>
+  <button data-v="plan">Plan</button>
+  <button data-v="bl">Backlog</button>
+  <button data-v="mocks">Mocks</button>
+  <button data-v="rewards">Rewards & Streak</button>
+  <button data-v="why">Why</button>
+</nav>
 <div id="main"></div></div>
 <script>
 const D={"days":[{"d":"2026-10-06","ph":"A","b":"Quant 12 Function I; VARC 6 RC question types; Quant 8 Profit & Loss","l":"8 PM LR Puzzles 1: ATTEND","p":"QA: Function I + Profit & Loss problems. DILR: 1 Venn + 1 DI set. VARC: 3 RC passages (elimination focus)","t":""},{"d":"2026-10-07","ph":"A","b":"Quant 15 Function II; LRDI 16 Venn Diagram 01; VARC 10 Para-jumble concepts","l":"8 PM Venn 02: ATTEND","p":"QA: Function I-II problems. DILR: 2 Venn sets (Venn 01 & 02). VARC: 3 RC passages + 5 para-jumbles","t":""},{"d":"2026-10-08","ph":"A","b":"Quant 6 Inequalities I; VARC 9 RC eliminating options","l":"8 PM Distance-Time-Speed 1: ATTEND","p":"QA: Inequalities I + TSD problems from tonight's class. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},{"d":"2026-10-09","ph":"A","b":"Quant 9 Inequalities II","l":"2 PM RC Retrieval: ATTEND. 8 PM Function III: ATTEND (Function I-II cleared)","p":"Light day (2 classes). QA: Inequalities II + Function III problems. DILR: 1 set. VARC: 2 RC passages","t":""},{"d":"2026-10-10","ph":"A","b":"Quant 10 Work Rate & Time 1; Quant 13 WRT 2 + Mixtures 1","l":"","p":"QA: work-time + mixtures problem sets, 1 TSD set. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},{"d":"2026-10-11","ph":"A","b":"","l":"","p":"Analyse the mock: log every error by topic and cause (concept / calculation / time)","t":"FULL MOCK #1 (diagnostic; the score doesn't matter)"},{"d":"2026-10-12","ph":"A","b":"LRDI 7 Games & Tournaments 1","l":"8 PM RC Main idea & Primary purpose: ATTEND","p":"DILR: Games & Tournaments sets. QA: 25 mixed arithmetic questions. VARC: 3 RC passages","t":""},{"d":"2026-10-13","ph":"A","b":"LRDI 9 Games & Tournaments 2","l":"8 PM LR Puzzles 2: ATTEND","p":"DILR: G&T + puzzle sets. QA: algebra mixed set. VARC: 3 RC passages","t":""},{"d":"2026-10-14","ph":"A","b":"LRDI 11 Maps & Networks 1","l":"8 PM Venn 03: ATTEND","p":"DILR: network sets + 1 Venn set. QA: TSD set. VARC: 3 RC passages","t":""},{"d":"2026-10-15","ph":"A","b":"LRDI 13 Maps & Networks 2","l":"2 PM Distance-Time-Speed 2: ATTEND","p":"DILR: network sets, timed. QA: TSD 1-2 problems. VARC: 3 RC passages","t":""},{"d":"2026-10-16","ph":"A","b":"Quant 14 Removal & Replacement","l":"2 PM RC Tone & Structure: ATTEND. 8 PM Triangle I: ATTEND","p":"Light day (2 classes). QA: removal-replacement + triangle basics. DILR: 1 set. VARC: 2 RC passages","t":""},{"d":"2026-10-17","ph":"A","b":"Quant 11 Logarithm; VARC 11 Para-jumbles Non-MCQs (missed live on Oct 3, take as recording)","l":"8 PM CR6 workshop: SKIP (use the slot for DILR sets)","p":"QA: logs + triangle problems. DILR: 3 timed sets across LR types learned. VARC: 3 RC passages","t":""},{"d":"2026-10-18","ph":"A","b":"LRDI 8 Caselets; LRDI 10 Misc Charts 01","l":"","p":"DILR: caselet + mixed chart sets (calculation speed). QA: Triangle I problems. VARC: 4 RC passages","t":""},{"d":"2026-10-19","ph":"B","b":"LRDI 12 Misc Charts 02; LRDI 14 Multiple Charts","l":"8 PM RC Strengthening & Weakening: ATTEND","p":"DILR: chart sets. QA: mixed arithmetic set. VARC: 3 RC passages","t":""},{"d":"2026-10-20","ph":"B","b":"","l":"8 PM LR Sets 1: ATTEND","p":"DILR: LR sets from the PYQ book, timed at 20 min each. QA: topic-wise PYQs on cleared topics","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-10-21","ph":"B","b":"LRDI 23 Missing Data (take as recording; clashes with LR Sets 2)","l":"8 PM LR Sets 2: ATTEND","p":"QA: arithmetic PYQs. VARC: 3 RC passages. DILR: 1 Missing Data set","t":"Sectional: QA (morning) + analysis"},{"d":"2026-10-22","ph":"B","b":"","l":"8 PM Distance-Time-Speed 3: ATTEND","p":"QA: TSD 1-3 problem sets. DILR: 2 LR sets. VARC: 3 RC passages + 5 para-jumbles","t":"Sectional: VARC (morning) + analysis"},{"d":"2026-10-23","ph":"B","b":"","l":"8 PM Triangle II: ATTEND","p":"QA: triangle problems (I-II). DILR: 2 mixed sets. VARC: 3 RC passages","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-10-24","ph":"B","b":"Optional: Interest or CR1-5, only if every priority item is Cleared","l":"","p":"QA: weak-topic repair from the error log. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},{"d":"2026-10-25","ph":"B","b":"","l":"","p":"Analyse Mock #2 fully before anything else","t":"FULL MOCK #2 + analysis"},{"d":"2026-10-26","ph":"B","b":"","l":"8 PM RC PYQs 2024: ATTEND","p":"QA: mixed PYQs. DILR: 2 sets. VARC: re-attempt the 2024 RC passages after class","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-10-27","ph":"B","b":"","l":"8 PM Para Odd One Out: ATTEND","p":"QA: algebra + arithmetic mixed set. DILR: 2 sets. VARC: odd-one-out + para-jumble practice","t":"Sectional: QA (morning) + analysis"},{"d":"2026-10-28","ph":"B","b":"","l":"8 PM LR Sets 3: ATTEND (CAT PYQ practice class clashes: recording or skip)","p":"DILR: LR set practice after class. QA: triangle + TSD mixed set. VARC: 3 RC passages","t":"Sectional: VARC (morning) + analysis"},{"d":"2026-10-29","ph":"B","b":"Optional: the Oct 28 PYQ-practice recording","l":"2 PM Circle: ATTEND. 8 PM Number System 1: ATTEND","p":"Light day (2 classes). QA: circle + factors/divisibility problems. VARC: 2 RC passages","t":""},{"d":"2026-10-30","ph":"B","b":"","l":"8 PM Quadrilaterals & Polygons: ATTEND","p":"QA: geometry problems (triangles, circles, polygons). DILR: 2 sets. VARC: 3 RC passages","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-10-31","ph":"B","b":"","l":"8 PM Para Completion: ATTEND","p":"QA: number system problems. DILR: 2 sets. VARC: para-completion + summary practice","t":"Sectional: QA (morning) + analysis"},{"d":"2026-11-01","ph":"B","b":"","l":"8 PM RC PYQs 2023: ATTEND","p":"Analyse Mock #3 before class; re-attempt the 2023 RC passages after","t":"FULL MOCK #3 (morning) + analysis"},{"d":"2026-11-02","ph":"B","b":"","l":"8 PM RC PYQs 2022: ATTEND","p":"QA: weak-topic repair. DILR: 2 sets. VARC: 2022 RC passages after class","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-11-03","ph":"B","b":"","l":"","p":"QA: number system + geometry mixed set. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},{"d":"2026-11-04","ph":"B","b":"","l":"8 PM Number System 2: ATTEND","p":"Analyse Mock #4 in the afternoon. QA: remainders and powers problems","t":"FULL MOCK #4 (morning)"},{"d":"2026-11-05","ph":"B","b":"","l":"2 PM Mensuration & Coordinate Geometry I: ATTEND. 8 PM Number System 3: ATTEND","p":"Light day (2 classes). QA: mensuration + HCF-LCM problems. VARC: 2 RC passages","t":""},{"d":"2026-11-06","ph":"B","b":"","l":"","p":"QA: mensuration + number system PYQs. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: DILR + analysis"},{"d":"2026-11-07","ph":"B","b":"","l":"8 PM VA Workshop: ATTEND (or watch the recording)","p":"Analyse Mock #5 after the mock","t":"FULL MOCK #5 (morning) + analysis"},{"d":"2026-11-08","ph":"B","b":"Optional: CR1-5 or Interest, only if every priority item is Cleared","l":"","p":"QA: repair the top 3 weak topics from the error log. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},{"d":"2026-11-09","ph":"C","b":"","l":"","p":"Analyse Mock #6 after the mock; update the error log","t":"FULL MOCK #6 + analysis"},{"d":"2026-11-10","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #6. DILR: 3 timed sets. VARC: 3 RC passages","t":"Sectional: DILR + analysis"},{"d":"2026-11-11","ph":"C","b":"","l":"","p":"Analyse Mock #7 after the mock; update the error log","t":"FULL MOCK #7 + analysis"},{"d":"2026-11-12","ph":"C","b":"","l":"2 PM Coordinate Geometry II: ATTEND. 8 PM Average + Series 1: ATTEND (or recording within 24h)","p":"Light day (2 classes). QA: series problems. VARC: 2 RC passages","t":""},{"d":"2026-11-13","ph":"C","b":"","l":"2 PM Series 2: ATTEND. 8 PM Permutation & Combination: ATTEND (or recordings within 24h)","p":"Light day (2 classes). QA: series + P&C problems","t":""},{"d":"2026-11-14","ph":"C","b":"","l":"2 PM Probability: ATTEND (or recording)","p":"QA: P&C + probability problems after class. Analyse Mock #8","t":"FULL MOCK #8 (morning) + analysis"},{"d":"2026-11-15","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #8. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: VARC + analysis"},{"d":"2026-11-16","ph":"C","b":"","l":"8 PM RC PYQs 2021: OPTIONAL (skip live; do the passages timed yourself)","p":"Analyse Mock #9 after the mock","t":"FULL MOCK #9 + analysis"},{"d":"2026-11-17","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #9. DILR: 2 sets. VARC: 3 RC passages","t":"Sectional: QA + analysis"},{"d":"2026-11-18","ph":"C","b":"","l":"","p":"Analyse Mock #10 after the mock","t":"FULL MOCK #10 + analysis"},{"d":"2026-11-19","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #10. VARC: 3 RC passages","t":"Sectional: DILR + analysis"},{"d":"2026-11-20","ph":"C","b":"","l":"","p":"Analyse Mock #11 after the mock","t":"FULL MOCK #11 + analysis"},{"d":"2026-11-21","ph":"C","b":"","l":"","p":"Weak-topic repair, error-log revision, 2 DILR sets, 3 RC passages","t":""},{"d":"2026-11-22","ph":"C","b":"","l":"","p":"Analyse Mock #12 after the mock; final error-log update","t":"FULL MOCK #12 + analysis"},{"d":"2026-11-23","ph":"D","b":"","l":"","p":"Error-log revision. QA formula-sheet pass. 1 DILR set","t":""},{"d":"2026-11-24","ph":"D","b":"","l":"","p":"Light day: review the Mock #12 analysis","t":"Optional: light mock #13 or two sectionals"},{"d":"2026-11-25","ph":"D","b":"","l":"","p":"Formula sheet + light RC/VA practice. 1 DILR set","t":""},{"d":"2026-11-26","ph":"D","b":"","l":"","p":"1 DILR set + 1 RC passage only. Sleep early","t":""},{"d":"2026-11-27","ph":"D","b":"","l":"","p":"Rest. Check admit card, photo ID, test-centre route and slot time","t":""},{"d":"2026-11-28","ph":"D","b":"","l":"","p":"Rest day. No new problems","t":""},{"d":"2026-11-29","ph":"X","b":"","l":"","p":"CAT 2026 exam day","t":"CAT 2026"}],"bl":[{"r":"VARC 6","n":"RC: Types of questions asked in RC","t":"Tier 1","w":"06 Oct"},{"r":"VARC 9","n":"RC: Grounds of eliminating incorrect answer choices","t":"Tier 1","w":"08 Oct"},{"r":"Quant 8","n":"Arithmetic: Profit and Loss","t":"Tier 1","w":"06 Oct"},{"r":"LRDI 16","n":"LR-based DI: Venn Diagram 01","t":"Tier 1","w":"07 Oct"},{"r":"VARC 10","n":"Para-jumbles: Concepts and MCQs","t":"Tier 1","w":"07 Oct"},{"r":"Quant 12","n":"Algebra: Function I","t":"Tier 1","w":"06 Oct"},{"r":"Quant 15","n":"Algebra: Function II","t":"Tier 1","w":"07 Oct"},{"r":"Quant 6","n":"Algebra: Inequalities I","t":"Tier 1","w":"08 Oct"},{"r":"Quant 9","n":"Algebra: Inequalities II","t":"Tier 1","w":"09 Oct"},{"r":"Quant 10","n":"Arithmetic: Work Rate and Time 1","t":"Tier 2","w":"10 Oct"},{"r":"Quant 13","n":"Arithmetic: Work Rate and Time 2 + Mixtures 1","t":"Tier 2","w":"10 Oct"},{"r":"LRDI 7","n":"LR: Games & Tournaments 1","t":"Tier 1","w":"12 Oct"},{"r":"LRDI 9","n":"LR: Games & Tournaments 2","t":"Tier 1","w":"13 Oct"},{"r":"LRDI 11","n":"LR: Maps & Networks 1","t":"Tier 1","w":"14 Oct"},{"r":"LRDI 13","n":"LR: Maps & Networks 2","t":"Tier 1","w":"15 Oct"},{"r":"Quant 14","n":"Arithmetic: Removal and Replacement","t":"Tier 2","w":"16 Oct"},{"r":"Quant 11","n":"Algebra: Logarithm","t":"Tier 2","w":"17 Oct"},{"r":"LRDI 8","n":"DI: Caselets","t":"Tier 2","w":"18 Oct"},{"r":"LRDI 10","n":"DI: Misc Charts 01","t":"Tier 2","w":"18 Oct"},{"r":"LRDI 12","n":"DI: Misc Charts 02","t":"Tier 2","w":"19 Oct"},{"r":"LRDI 14","n":"DI: Multiple Charts","t":"Tier 2","w":"19 Oct"},{"r":"Quant 17","n":"Arithmetic: Interest","t":"Tier 3","w":"Optional"},{"r":"VARC 3","n":"CR 1: Foundation, Analysing the Argument, Identify the Assumption","t":"Tier 3","w":"Optional"},{"r":"VARC 4","n":"CR 2: Strengthen and Weaken the Argument","t":"Tier 3","w":"Optional"},{"r":"VARC 5","n":"CR 3: Identify the Logical Flaw","t":"Tier 3","w":"Optional"},{"r":"VARC 7","n":"CR 4: Identify the Inference","t":"Tier 3","w":"Optional"},{"r":"VARC 8","n":"CR 5: Resolve the Paradox; Similar Structure Arguments","t":"Tier 3","w":"Optional"}],"mk":[{"n":1,"d":"11 Oct","ty":"Full (diagnostic)"},{"n":2,"d":"25 Oct","ty":"Full"},{"n":3,"d":"01 Nov","ty":"Full"},{"n":4,"d":"04 Nov","ty":"Full"},{"n":5,"d":"07 Nov","ty":"Full"},{"n":6,"d":"09 Nov","ty":"Full"},{"n":7,"d":"11 Nov","ty":"Full"},{"n":8,"d":"14 Nov","ty":"Full"},{"n":9,"d":"16 Nov","ty":"Full"},{"n":10,"d":"18 Nov","ty":"Full"},{"n":11,"d":"20 Nov","ty":"Full"},{"n":12,"d":"22 Nov","ty":"Full"},{"n":13,"d":"24 Nov","ty":"Optional light mock"}],"ph":{"A":"Backlog sprint","B":"Learn + sectionals","C":"Mock phase","D":"Taper","X":"Exam day"}};
 const K='catplan1',MK={Done:'\u25cf',Partial:'\u25d0',Missed:'\u2715'};
-let S={d:{},w:{},s:{},m:{}},ref=null,tm,view='today',cur=0;
-try{const x=JSON.parse(localStorage.getItem(K));if(x)S=x}catch(e){}
+let S={d:{},w:{},s:{},m:{},rw:{}},ref=null,tm,view='today',cur=0;
+try{const x=JSON.parse(localStorage.getItem(K));if(x)S=Object.assign(S,x);if(!S.rw)S.rw={}}catch(e){}
 const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
 const tdf=()=>{const n=new Date();return n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate())};let td=tdf();
 const fd=s=>new Date(s+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
@@ -65,47 +101,268 @@ if(r.status===401){localStorage.removeItem('catkey');KEY=(prompt('Wrong passphra
 if(!r.ok){if(r.status===401)KEY='';return}
 localStorage.setItem('catkey',KEY);
 const j=await r.json(),rem=j.s?JSON.parse(j.s):null;
-if(rem&&(rem.t||0)>(S.t||0)){S=rem;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+if(rem&&(rem.t||0)>(S.t||0)){S=Object.assign(S,rem);if(!S.rw)S.rw={};try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 else if(!rem||(S.t||0)>(rem.t||0))push()}catch(e){}}
 async function sync(){if(busy)return;busy=true;try{await pull()}finally{busy=false;sweep();render()}}
 function sweep(){let c=false;D.days.forEach(x=>{if(x.d<td&&!S.d[x.d]){S.d[x.d]='Missed';c=true}});if(c)save()}
+
+// Gamification Calculation Engine
+function calcStats(){
+  let done=0,partial=0,curStreak=0,maxStreak=0,running=0;
+  D.days.forEach(x=>{
+    const st=S.d[x.d];
+    if(st==='Done'){
+      done++;
+      running++;
+      if(running>maxStreak)maxStreak=running;
+    } else {
+      running=0;
+    }
+  });
+  // Calculate Current Streak from today backward
+  for(let i=D.days.length-1;i>=0;i--){
+    const x=D.days[i];
+    if(x.d<=td){
+      if(S.d[x.d]==='Done')curStreak++;
+      else if(x.d<td)break;
+    }
+  }
+
+  // Backlog counts
+  const pr=D.bl.filter(b=>b.t!=='Tier 3');
+  const pc=pr.filter(b=>S.w[b.r]&&S.s[b.r]).length;
+  let wCount=0,sCount=0,bothCount=0;
+  D.bl.forEach(b=>{
+    if(S.w[b.r])wCount++;
+    if(S.s[b.r])sCount++;
+    if(S.w[b.r]&&S.s[b.r])bothCount++;
+  });
+
+  // Mock attempts and scores
+  let mockAttempts=0,highMockScore=0;
+  D.mk.forEach(m=>{
+    const scores=(S.m[m.n]||[]).filter(x=>x!=='').map(Number);
+    if(scores.length===3){
+      mockAttempts++;
+      const tot=scores.reduce((a,b)=>a+b,0);
+      if(tot>highMockScore)highMockScore=tot;
+    }
+  });
+
+  // XP calculation
+  let xp = (done * 50) + (partial * 25) + (wCount * 20) + (sCount * 30) + (bothCount * 15) + (mockAttempts * 100);
+  if(highMockScore>=60) xp += 50;
+  if(highMockScore>=75) xp += 100;
+  if(curStreak>=3) xp += 50;
+  if(curStreak>=7) xp += 150;
+  if(curStreak>=14) xp += 350;
+
+  // Level thresholds
+  const levels = [
+    { lvl: 1, title: 'Foundation Builder', min: 0, max: 250 },
+    { lvl: 2, title: 'Backlog Slayer', min: 250, max: 600 },
+    { lvl: 3, title: 'Sectional Warrior', min: 600, max: 1200 },
+    { lvl: 4, title: '90%ile Contender', min: 1200, max: 2000 },
+    { lvl: 5, title: '99%ile Elite', min: 2000, max: 3200 },
+    { lvl: 6, title: 'IIM BLACKI Ready', min: 3200, max: 5000 }
+  ];
+  let curLvl = levels[0];
+  for(const l of levels){
+    if(xp>=l.min)curLvl=l;
+  }
+  const lvlProgress = Math.min(100, Math.round(((xp - curLvl.min) / Math.max(1, curLvl.max - curLvl.min)) * 100));
+
+  // Readiness Index (0 - 100%)
+  const dayProgress = done / D.days.length;
+  const backlogProgress = pc / pr.length;
+  const mockProgress = mockAttempts / D.mk.length;
+  const readiness = Math.min(100, Math.round((dayProgress * 40) + (backlogProgress * 30) + (mockProgress * 30)));
+
+  return { done, partial, curStreak, maxStreak, pc, prLen: pr.length, xp, curLvl, lvlProgress, readiness, bothCount, mockAttempts, highMockScore };
+}
+
+// GitHub Streak Heatmap Component (Monochrome)
+function renderGithubGrid(){
+  const g = calcStats();
+  // 55 days spanning 8 weeks (Mon Oct 6 - Sun Nov 29)
+  const cells = [];
+  for(let i=0; i<56; i++){
+    if(i < D.days.length){
+      const day = D.days[i];
+      const st = S.d[day.d] || '';
+      let cls = 'c-empty';
+      if(st === 'Done') cls = 'c-done';
+      else if(st === 'Partial') cls = 'c-partial';
+      else if(st === 'Missed') cls = 'c-missed';
+      
+      const title = `${fd(day.d)}: ${st || 'Pending'}${day.t ? ' ['+day.t+']' : ''}`;
+      cells.push(`<div class="gh-cell ${cls}" title="${title}" data-a="go" data-i="${i}"></div>`);
+    } else {
+      cells.push(`<div class="gh-cell c-empty" style="opacity:0.05;cursor:default;"></div>`);
+    }
+  }
+
+  return `<div class="gh-wrap">
+    <div class="gh-header">
+      <span>Sprint Activity Heatmap</span>
+      <span>${g.curStreak}d Streak 🔥 · ${g.done}/${D.days.length} Days</span>
+    </div>
+    <div class="gh-months">
+      <span>Oct W1</span><span>W2</span><span>W3</span><span>W4</span><span>Nov W5</span><span>W6</span><span>W7</span><span>W8</span>
+    </div>
+    <div class="gh-body">
+      <div class="gh-days-lbl"><span>M</span><span>W</span><span>F</span><span>S</span></div>
+      <div class="gh-grid">${cells.join('')}</div>
+    </div>
+    <div class="gh-legend">
+      <span>Less</span>
+      <span class="gh-leg-box" style="opacity:.2;"></span>
+      <span class="gh-leg-box" style="border-style:dashed;opacity:.55;"></span>
+      <span class="gh-leg-box" style="background:var(--mu);opacity:.6;"></span>
+      <span class="gh-leg-box" style="background:var(--fg);"></span>
+      <span>More (○ Pending · ✕ Missed · ◒ Partial · ● Done)</span>
+    </div>
+  </div>`;
+}
+
 function vToday(){
-const x=D.days[cur],st=S.d[x.d]||'';
-const isEveBeforeStart = td < D.days[0].d && cur === 0;
-const canMark = x.d === td || isEveBeforeStart;
-const r=(l,v)=>v?`<section><h3>${l}</h3><p>${v}</p></section>`:'';
-return `<div class="top"><button data-a="prev">\u2190</button><h2>${fd(x.d)}<small>${x.d===td?'today \u00b7 ':''}${D.ph[x.ph]}</small></h2><button data-a="next">\u2192</button></div>`
-+r('Clear backlog',x.b)+r('Live class',x.l)+r('Practice',x.p)+r('Test',x.t)
-+`<div class="seg">${['Done','Partial','Missed'].map(s=>`<button data-a="st" data-v="${s}" class="${st===s?'on':''}" ${canMark?'':'disabled'}>${s}</button>`).join('')}</div><p class="note" style="margin-top:8px">${x.d<td?'Day closed. Unmarked days become Missed.':(x.d>td && !isEveBeforeStart)?'You can only mark a day on that day.':isEveBeforeStart?'Sprint starts tomorrow (06 Oct). You can mark Day 1.':'Mark Done before midnight, or it becomes Missed.'}</p>`}
-function vPlan(){return D.days.map((x,i)=>`<button class="pl" data-a="go" data-i="${i}"><span>${fd(x.d)}</span><span>${MK[S.d[x.d]]||'\u25cb'}</span><span>${x.t||(x.l?x.l.split('.')[0]:'')}</span></button>`).join('')}
-function vBl(){return `<p class="note">Tick Watched, then Solved once you finish same-day problems. Tier 3 is optional.</p><div class="sc"><table><tr><th>Class</th><th>Tier</th><th>Plan</th><th>Watched</th><th>Solved</th></tr>`
-+D.bl.map(b=>`<tr class="${S.w[b.r]&&S.s[b.r]?'dn':''}"><td>${b.r}<br>${b.n}</td><td>${b.t.replace('Tier ','')}</td><td>${b.w}</td><td><input type="checkbox" data-a="w" data-r="${b.r}" ${S.w[b.r]?'checked':''}></td><td><input type="checkbox" data-a="s" data-r="${b.r}" ${S.s[b.r]?'checked':''}></td></tr>`).join('')+`</table></div>`}
+  const x=D.days[cur],st=S.d[x.d]||'';
+  const isEveBeforeStart = td < D.days[0].d && cur === 0;
+  const canMark = x.d === td || isEveBeforeStart;
+  const r=(l,v)=>v?`<section><h3>${l}</h3><p>${v}</p></section>`:'';
+  return `<div class="top"><button data-a="prev">\u2190</button><h2>${fd(x.d)}<small>${x.d===td?'today \u00b7 ':''}${D.ph[x.ph]}</small></h2><button data-a="next">\u2192</button></div>`
+  +r('Clear backlog',x.b)+r('Live class',x.l)+r('Practice',x.p)+r('Test',x.t)
+  +`<div class="seg">${['Done','Partial','Missed'].map(s=>`<button data-a="st" data-v="${s}" class="${st===s?'on':''}" ${canMark?'':'disabled'}>${s}</button>`).join('')}</div>`
+  +`<p class="note" style="margin-top:8px">${x.d<td?'Day closed. Unmarked days become Missed.':(x.d>td && !isEveBeforeStart)?'You can only mark a day on that day.':isEveBeforeStart?'Sprint starts tomorrow (06 Oct). You can mark Day 1.':'Mark Done before midnight, or it becomes Missed.'}</p>`
+  +renderGithubGrid();
+}
+
+function vPlan(){
+  return renderGithubGrid()
+  +D.days.map((x,i)=>`<button class="pl" data-a="go" data-i="${i}"><span>${fd(x.d)}</span><span>${MK[S.d[x.d]]||'\u25cb'}</span><span>${x.t||(x.l?x.l.split('.')[0]:'')}</span></button>`).join('');
+}
+
+function vBl(){
+  return `<p class="note">Tick Watched, then Solved once you finish same-day problems. Tier 3 is optional.</p><div class="sc"><table><tr><th>Class</th><th>Tier</th><th>Plan</th><th>Watched</th><th>Solved</th></tr>`
+  +D.bl.map(b=>`<tr class="${S.w[b.r]&&S.s[b.r]?'dn':''}"><td>${b.r}<br>${b.n}</td><td>${b.t.replace('Tier ','')}</td><td>${b.w}</td><td><input type="checkbox" data-a="w" data-r="${b.r}" ${S.w[b.r]?'checked':''}></td><td><input type="checkbox" data-a="s" data-r="${b.r}" ${S.s[b.r]?'checked':''}></td></tr>`).join('')+`</table></div>`;
+}
+
 const tot=n=>{const v=(S.m[n]||[]).filter(x=>x!=='').map(Number);return v.length?v.reduce((a,b)=>a+b,0):'-'};
-function vMocks(){return `<p class="note">Marks per section. Analyse each mock for about twice as long as you took it.</p><div class="sc"><table><tr><th>#</th><th>Date</th><th>VARC</th><th>DILR</th><th>QA</th><th>Total</th></tr>`
-+D.mk.map(m=>`<tr><td>${m.n}</td><td>${m.d}</td>${[0,1,2].map(k=>`<td><input type="number" data-a="m" data-n="${m.n}" data-k="${k}" value="${(S.m[m.n]||[])[k]??''}"></td>`).join('')}<td id="t${m.n}">${tot(m.n)}</td></tr>`).join('')+`</table></div>`}
-function vWhy(){const R=(a,b,c)=>`<tr><td>${a}</td><td>${b}</td><td>${c}</td></tr>`;
-return `<p class="note">Average CTC from 2026 final placements unless marked, as reported by institutes and aggregators. Averages include outliers, so check the median too.</p><div class="sc"><table><tr><th>Path</th><th>Average CTC</th><th>Median</th></tr>`
-+R('Without MBA (your estimate)','\u20b94-8 L','-')+R('IIM Calcutta','\u20b936 L','\u20b935 L')+R('IIM Lucknow','\u20b933.2 L','\u20b932.9 L')
-+R('IIM Indore','\u20b927.3 L','\u20b925 L')+R('IIT Bombay SJMSOM','\u20b928.2 L','\u20b926 L')+R('IIFT Delhi MBA (IB), 2025','\u20b931.3 L','\u20b926 L')
-+R('Newer IIMs (Raipur, Rohtak, etc.)','about \u20b918-22 L','-')+`</table></div>`
-+`<section><h3>The rough maths</h3><p>Newer IIM fees are about \u20b917-22 L, plus two years of salary you give up (about \u20b910 L at \u20b95 L a year). A \u20b920 L average against a \u20b96 L job is about \u20b914 L extra a year, so the cost is recovered in roughly 2-3 years, before tax and loan interest. Illustrative arithmetic, not a forecast.</p></section>`
-+`<section><h3>What 90 percentile means</h3><p>It clears the minimum bar at most IIMs and makes you a serious candidate at the newer ones. IITs, IIFT and the top old IIMs usually need higher percentiles. Check each institute's category cut-offs.</p></section>`
-+`<section><h3>Be honest with yourself</h3><p>Averages are not guarantees. Fees may be loan-funded, and some IIMs offer fee support, so check each one. The gap over a \u20b94-8 L job is large, but it only pays off if you convert a call and finish with a strong profile.</p></section>`}
-function render(){const done=Object.values(S.d).filter(v=>v==='Done').length;
-const pr=D.bl.filter(b=>b.t!=='Tier 3'),pc=pr.filter(b=>S.w[b.r]&&S.s[b.r]).length;
-const left=Math.max(0,Math.ceil((new Date('2026-11-29T00:00:00')-new Date(td+'T00:00:00'))/864e5));
-$('stats').innerHTML=`<div><b>${left}</b>days to CAT</div><div><b>${done}/${D.days.length}</b>days done</div><div><b>${pc}/${pr.length}</b>backlog cleared</div>`;
-document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===view));
-$('main').innerHTML=({today:vToday,plan:vPlan,bl:vBl,mocks:vMocks,why:vWhy})[view]()}
+function vMocks(){
+  return `<p class="note">Marks per section. Analyse each mock for about twice as long as you took it.</p><div class="sc"><table><tr><th>#</th><th>Date</th><th>VARC</th><th>DILR</th><th>QA</th><th>Total</th></tr>`
+  +D.mk.map(m=>`<tr><td>${m.n}</td><td>${m.d}</td>${[0,1,2].map(k=>`<td><input type="number" data-a="m" data-n="${m.n}" data-k="${k}" value="${(S.m[m.n]||[])[k]??''}"></td>`).join('')}<td id="t${m.n}">${tot(m.n)}</td></tr>`).join('')+`</table></div>`;
+}
+
+// Rewards & Streak View
+function vRewards(){
+  const g = calcStats();
+  
+  // Unlockable Badges
+  const badges = [
+    { id: 'b1', name: 'Day 1 Launch', desc: 'Completed Day 1 (06 Oct)', icon: '🚀', unl: S.d['2026-10-06'] === 'Done' },
+    { id: 'b2', name: 'Venn Master', desc: 'LRDI 16 Venn 01 Watched & Solved', icon: '🧩', unl: !!(S.w['LRDI 16'] && S.s['LRDI 16']) },
+    { id: 'b3', name: 'Algebra Gladiator', desc: 'Functions I & II cleared', icon: '📐', unl: !!(S.w['Quant 12'] && S.s['Quant 12'] && S.w['Quant 15'] && S.s['Quant 15']) },
+    { id: 'b4', name: 'Arithmetic Ace', desc: 'P&L + Work Rate + Mixtures cleared', icon: '🏃', unl: !!(S.w['Quant 8'] && S.s['Quant 8'] && S.w['Quant 10'] && S.s['Quant 10']) },
+    { id: 'b5', name: 'Backlog Slayer', desc: 'Cleared 10+ backlog lectures', icon: '⚡', unl: g.bothCount >= 10 },
+    { id: 'b6', name: 'Mock Pioneer', desc: 'Attempted first 3 full mocks', icon: '📝', unl: g.mockAttempts >= 3 },
+    { id: 'b7', name: 'Centurion', desc: 'Scored 75+ marks in a mock (99%ile)', icon: '👑', unl: g.highMockScore >= 75 },
+    { id: 'b8', name: 'Unbroken 7', desc: 'Maintained a 7-day streak', icon: '🔥', unl: g.maxStreak >= 7 },
+    { id: 'b9', name: 'Syllabus Titan', desc: 'All 21 Tier 1 & 2 priority backlogs cleared', icon: '🛡️', unl: g.pc === g.prLen },
+    { id: 'b10', name: 'BLACKI Ready', desc: 'Achieved Lv. 6 (3200+ XP)', icon: '🎓', unl: g.xp >= 3200 }
+  ];
+
+  // Default Claimable Treats
+  const defaultRewards = [
+    { id: 'rw1', req: 'Reach Lv. 2 (250 XP)', treat: 'Cheat meal / Favorite pizza night 🍕' },
+    { id: 'rw2', req: 'Hit 7-Day Streak 🔥', treat: 'Watch 1 favorite movie guilt-free 🎬' },
+    { id: 'rw3', req: 'Reach Lv. 4 (1200 XP)', treat: 'Buy a study gadget / new stationery 🎧' },
+    { id: 'rw4', req: 'Score 70+ in a Mock', treat: 'Long Sunday coffee break & celebration ☕' },
+    { id: 'rw5', req: 'Clear 100% Backlog', treat: 'Half-day outdoor rest & relaxation 🌿' }
+  ];
+
+  return `
+    <div class="lvl-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <b style="font-size:16px;">Level ${g.curLvl.lvl}: ${g.curLvl.title}</b>
+          <div style="font-size:12px;color:var(--mu);margin-top:2px;">${g.xp} Total XP · ${g.curLvl.max - g.xp > 0 ? (g.curLvl.max - g.xp) + ' XP to Level ' + (g.curLvl.lvl+1) : 'Max Level Reached!'}</div>
+        </div>
+        <div style="text-align:right;">
+          <b style="font-size:16px;">${g.readiness}%</b>
+          <div style="font-size:11px;color:var(--mu);">Readiness Index</div>
+        </div>
+      </div>
+      <div class="lvl-bar-bg"><div class="lvl-bar-fill" style="width:${g.lvlProgress}%;"></div></div>
+    </div>
+
+    ${renderGithubGrid()}
+
+    <section>
+      <h3>Achievement Badges (${badges.filter(b=>b.unl).length}/${badges.length} Unlocked)</h3>
+      <div class="badge-grid">
+        ${badges.map(b=>`
+          <div class="badge-box ${b.unl?'':'locked'}">
+            <span class="badge-icon">${b.icon}</span>
+            <div>
+              <strong>${b.name}</strong>
+              <div style="font-size:11px;color:var(--mu);">${b.desc}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+
+    <section>
+      <h3>Guilt-Free Milestone Treats</h3>
+      <p class="note">Claim real-world rewards as you hit milestones.</p>
+      ${defaultRewards.map(rw=>`
+        <div class="rw-item">
+          <div>
+            <strong>${rw.treat}</strong>
+            <div style="font-size:12px;color:var(--mu);">${rw.req}</div>
+          </div>
+          <input type="checkbox" data-a="rw" data-id="${rw.id}" ${S.rw[rw.id]?'checked':''}>
+        </div>
+      `).join('')}
+    </section>
+  `;
+}
+
+function vWhy(){
+  const R=(a,b,c)=>`<tr><td>${a}</td><td>${b}</td><td>${c}</td></tr>`;
+  return `<p class="note">Average CTC from 2026 final placements unless marked, as reported by institutes and aggregators. Averages include outliers, so check the median too.</p><div class="sc"><table><tr><th>Path</th><th>Average CTC</th><th>Median</th></tr>`
+  +R('Without MBA (your estimate)','\u20b94-8 L','-')+R('IIM Calcutta','\u20b936 L','\u20b935 L')+R('IIM Lucknow','\u20b933.2 L','\u20b932.9 L')
+  +R('IIM Indore','\u20b927.3 L','\u20b925 L')+R('IIT Bombay SJMSOM','\u20b928.2 L','\u20b926 L')+R('IIFT Delhi MBA (IB), 2025','\u20b931.3 L','\u20b926 L')
+  +R('Newer IIMs (Raipur, Rohtak, etc.)','about \u20b918-22 L','-')+`</table></div>`
+  +`<section><h3>The rough maths</h3><p>Newer IIM fees are about \u20b917-22 L, plus two years of salary you give up (about \u20b910 L at \u20b95 L a year). A \u20b920 L average against a \u20b96 L job is about \u20b914 L extra a year, so the cost is recovered in roughly 2-3 years, before tax and loan interest. Illustrative arithmetic, not a forecast.</p></section>`
+  +`<section><h3>What 90 percentile means</h3><p>It clears the minimum bar at most IIMs and makes you a serious candidate at the newer ones. IITs, IIFT and the top old IIMs usually need higher percentiles. Check each institute's category cut-offs.</p></section>`
+  +`<section><h3>Be honest with yourself</h3><p>Averages are not guarantees. Fees may be loan-funded, and some IIMs offer fee support, so check each one. The gap over a \u20b94-8 L job is large, but it only pays off if you convert a call and finish with a strong profile.</p></section>`;
+}
+
+function render(){
+  const g = calcStats();
+  const left=Math.max(0,Math.ceil((new Date('2026-11-29T00:00:00')-new Date(td+'T00:00:00'))/864e5));
+  $('stats').innerHTML=`
+    <div><b>${left}</b>days to CAT</div>
+    <div><b>${g.curStreak}d 🔥</b>streak</div>
+    <div><b>Lv.${g.curLvl.lvl}</b>${g.xp} XP</div>
+    <div><b>${g.pc}/${g.prLen}</b>backlog</div>
+  `;
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===view));
+  $('main').innerHTML=({today:vToday,plan:vPlan,bl:vBl,mocks:vMocks,rewards:vRewards,why:vWhy})[view]();
+}
+
 document.querySelector('nav').addEventListener('click',e=>{const b=e.target.closest('button');if(b){view=b.dataset.v;render();window.scrollTo(0,0)}});
-$('main').addEventListener('click',e=>{const b=e.target.closest('button[data-a]');if(!b)return;const a=b.dataset.a;
+$('main').addEventListener('click',e=>{const b=e.target.closest('button[data-a], .gh-cell[data-a]');if(!b)return;const a=b.dataset.a;
 if(a==='prev'&&cur>0)cur--;else if(a==='next'&&cur<D.days.length-1)cur++;
 else if(a==='go'){cur=+b.dataset.i;view='today';window.scrollTo(0,0)}
 else if(a==='st'){const k=D.days[cur].d;const isEveBeforeStart = td < D.days[0].d && cur === 0;if(k!==td && !isEveBeforeStart)return;S.d[k]=S.d[k]===b.dataset.v?'':b.dataset.v;save()}
 render()});
 $('main').addEventListener('change',e=>{const t=e.target,a=t.dataset.a;
 if(a==='w'||a==='s'){S[a][t.dataset.r]=t.checked;save();render()}
-else if(a==='m'){const n=t.dataset.n;S.m[n]=S.m[n]||['','',''];S.m[n][+t.dataset.k]=t.value;save();$('t'+n).textContent=tot(n)}});
+else if(a==='rw'){S.rw[t.dataset.id]=t.checked;save();render()}
+else if(a==='m'){const n=t.dataset.n;S.m[n]=S.m[n]||['','',''];S.m[n][+t.dataset.k]=t.value;save();$('t'+n).textContent=tot(n);render()}});
+
 render();sync();
 setInterval(()=>{const t=tdf();if(t!==td){td=t;sync()}},30000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){td=tdf();sync()}});
