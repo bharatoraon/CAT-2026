@@ -13,7 +13,7 @@ An advanced, responsive, and data-driven preparation tracker and strategy comman
   - Integrated 40-minute Sectional Focus Timer (CAT Slot Mode, 25m Pomodoro, and 15m review presets).
   - Auto-saving Daily Reflection & Scratchpad.
 
-- **📅 57-Day Sprint Roadmap**:
+- **📅 55-Day Sprint Roadmap (6th Oct – 29th Nov 2026)**:
   - Complete day-by-day plan leading up to CAT 2026 Exam Day (Nov 29, 2026).
   - Phase filter (Phase A: Backlog Sprint, Phase B: Learn & Sectionals, Phase C: Mock Phase, Phase D: Taper).
   - Full-text instant topic search.

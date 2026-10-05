@@ -1442,7 +1442,7 @@ html[data-theme="light"] .stat-progress {
         <span class="stat-icon">🔥</span>
       </div>
       <div id="statStreak" class="stat-value">0 days</div>
-      <div id="statDoneSub" class="stat-subtitle">0/57 Completed</div>
+      <div id="statDoneSub" class="stat-subtitle">0/55 Completed</div>
       <div class="stat-progress">
         <div id="progDone" class="stat-progress-bar" style="width: 0%;"></div>
       </div>
@@ -1606,11 +1606,9 @@ html[data-theme="light"] .stat-progress {
 // Master Plan Dataset
 const D = {
   days: [
-    {"d":"2026-10-04","ph":"A","b":"VARC 6 RC question types; VARC 9 RC eliminating options; Quant 8 Profit & Loss","l":"","p":"Heavy recording day (3 classes), so lighter practice. QA: Profit & Loss + percentage mixed set. DILR: 1 arrangement/distribution set. VARC: 3 RC passages using the elimination method","t":""},
-    {"d":"2026-10-05","ph":"A","b":"LRDI 16 Venn Diagram 01; VARC 10 Para-jumble concepts","l":"2 PM RC Inference & VIC: ATTEND (only if you cleared RC types + eliminating options on Oct 4; otherwise take as recording)","p":"QA: Equations + Exponents problem set. DILR: 2 Venn sets. VARC: 3 RC passages (inference focus)","t":""},
-    {"d":"2026-10-06","ph":"A","b":"Quant 12 Function I","l":"8 PM LR Puzzles 1: ATTEND","p":"QA: Function I problems. DILR: 1 Venn + 1 DI set. VARC: 3 RC passages","t":""},
-    {"d":"2026-10-07","ph":"A","b":"Quant 15 Function II","l":"8 PM Venn 02: ATTEND","p":"QA: Function I-II problems. DILR: 2 Venn sets. VARC: 3 RC passages","t":""},
-    {"d":"2026-10-08","ph":"A","b":"Quant 6 Inequalities I","l":"8 PM Distance-Time-Speed 1: ATTEND","p":"QA: Inequalities I + TSD problems from tonight's class. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},
+    {"d":"2026-10-06","ph":"A","b":"Quant 12 Function I; VARC 6 RC question types; Quant 8 Profit & Loss","l":"8 PM LR Puzzles 1: ATTEND","p":"QA: Function I + Profit & Loss problems. DILR: 1 Venn + 1 DI set. VARC: 3 RC passages (elimination focus)","t":""},
+    {"d":"2026-10-07","ph":"A","b":"Quant 15 Function II; LRDI 16 Venn Diagram 01; VARC 10 Para-jumble concepts","l":"8 PM Venn 02: ATTEND","p":"QA: Function I-II problems. DILR: 2 Venn sets (Venn 01 & 02). VARC: 3 RC passages + 5 para-jumbles","t":""},
+    {"d":"2026-10-08","ph":"A","b":"Quant 6 Inequalities I; VARC 9 RC eliminating options","l":"8 PM Distance-Time-Speed 1: ATTEND","p":"QA: Inequalities I + TSD problems from tonight's class. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},
     {"d":"2026-10-09","ph":"A","b":"Quant 9 Inequalities II","l":"2 PM RC Retrieval: ATTEND. 8 PM Function III: ATTEND (Function I-II cleared)","p":"Light day (2 classes). QA: Inequalities II + Function III problems. DILR: 1 set. VARC: 2 RC passages","t":""},
     {"d":"2026-10-10","ph":"A","b":"Quant 10 Work Rate & Time 1; Quant 13 WRT 2 + Mixtures 1","l":"","p":"QA: work-time + mixtures problem sets, 1 TSD set. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},
     {"d":"2026-10-11","ph":"A","b":"","l":"","p":"Analyse the mock: log every error by topic and cause (concept / calculation / time)","t":"FULL MOCK #1 (diagnostic; the score doesn't matter)"},
@@ -1665,11 +1663,11 @@ const D = {
     {"d":"2026-11-29","ph":"X","b":"","l":"","p":"CAT 2026 exam day","t":"CAT 2026"}
   ],
   bl: [
-    {"r":"VARC 6","n":"RC: Types of questions asked in RC","t":"Tier 1","w":"04 Oct","sub":"VARC"},
-    {"r":"VARC 9","n":"RC: Grounds of eliminating incorrect answer choices","t":"Tier 1","w":"04 Oct","sub":"VARC"},
-    {"r":"Quant 8","n":"Arithmetic: Profit and Loss","t":"Tier 1","w":"04 Oct","sub":"Quant"},
-    {"r":"LRDI 16","n":"LR-based DI: Venn Diagram 01","t":"Tier 1","w":"05 Oct","sub":"LRDI"},
-    {"r":"VARC 10","n":"Para-jumbles: Concepts and MCQs","t":"Tier 1","w":"05 Oct","sub":"VARC"},
+    {"r":"VARC 6","n":"RC: Types of questions asked in RC","t":"Tier 1","w":"06 Oct","sub":"VARC"},
+    {"r":"VARC 9","n":"RC: Grounds of eliminating incorrect answer choices","t":"Tier 1","w":"08 Oct","sub":"VARC"},
+    {"r":"Quant 8","n":"Arithmetic: Profit and Loss","t":"Tier 1","w":"06 Oct","sub":"Quant"},
+    {"r":"LRDI 16","n":"LR-based DI: Venn Diagram 01","t":"Tier 1","w":"07 Oct","sub":"LRDI"},
+    {"r":"VARC 10","n":"Para-jumbles: Concepts and MCQs","t":"Tier 1","w":"07 Oct","sub":"VARC"},
     {"r":"Quant 12","n":"Algebra: Function I","t":"Tier 1","w":"06 Oct","sub":"Quant"},
     {"r":"Quant 15","n":"Algebra: Function II","t":"Tier 1","w":"07 Oct","sub":"Quant"},
     {"r":"Quant 6","n":"Algebra: Inequalities I","t":"Tier 1","w":"08 Oct","sub":"Quant"},
@@ -2044,6 +2042,8 @@ function updateTimerUI() {
 function renderTodayView() {
   const day = D.days[curDayIndex];
   const isToday = day.d === todayDate;
+  const isEveBeforeStart = todayDate < D.days[0].d && curDayIndex === 0;
+  const canMark = isToday || isEveBeforeStart;
   const status = S.d[day.d] || '';
   
   // Parse Practice Quota into individual checkable tasks
@@ -2161,18 +2161,18 @@ function renderTodayView() {
       </div>
 
       <div class="day-status-selector">
-        <button class="status-btn ${status === 'Done' ? 'selected-done' : ''}" data-day-status="Done" ${!isToday ? 'disabled' : ''}>
+        <button class="status-btn ${status === 'Done' ? 'selected-done' : ''}" data-day-status="Done" ${!canMark ? 'disabled' : ''}>
           <span>●</span> Marked Done
         </button>
-        <button class="status-btn ${status === 'Partial' ? 'selected-partial' : ''}" data-day-status="Partial" ${!isToday ? 'disabled' : ''}>
+        <button class="status-btn ${status === 'Partial' ? 'selected-partial' : ''}" data-day-status="Partial" ${!canMark ? 'disabled' : ''}>
           <span>◐</span> Partial
         </button>
-        <button class="status-btn ${status === 'Missed' ? 'selected-missed' : ''}" data-day-status="Missed" ${!isToday ? 'disabled' : ''}>
+        <button class="status-btn ${status === 'Missed' ? 'selected-missed' : ''}" data-day-status="Missed" ${!canMark ? 'disabled' : ''}>
           <span>✕</span> Missed
         </button>
       </div>
       <p class="day-status-hint">
-        ${day.d < todayDate ? '🔒 Day closed. Unmarked past days are archived.' : day.d > todayDate ? '🔮 Future day: previewing roadmap plan.' : '⚡ Mark your day before midnight to maintain your streak!'}
+        ${day.d < todayDate ? '🔒 Day closed. Unmarked past days are archived.' : (day.d > todayDate && !isEveBeforeStart) ? '🔮 Future day: previewing roadmap plan.' : isEveBeforeStart ? '🚀 Sprint launches tomorrow (6th Oct)! You can preview or pre-mark Day 1.' : '⚡ Mark your day before midnight to maintain your streak!'}
       </p>
     </div>
 
