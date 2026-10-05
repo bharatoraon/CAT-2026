@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
     }
     if (req.method === 'PUT') {
       const s = req.body && req.body.s;
-      if (typeof s !== 'string' || s.length > 100000) return res.status(400).json({ error: 'bad request' });
+      if (typeof s !== 'string' || s.length > 1000000) return res.status(400).json({ error: 'bad request' });
       await redis.set('catplan', { s });
       return res.status(200).json({ ok: true });
     }

@@ -1,109 +1,3046 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CAT 2026 Plan</title>
+<title>CAT 2026 Master Planner & Strategy Hub</title>
+<meta name="description" content="Ultimate CAT 2026 Preparation Tracker, Catch-up Roadmap, Mock Analytics, Error Log Vault, and B-School ROI Engine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--fg:#000;--mu:#666;--ln:#000;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--fg:#fff;--mu:#999;--ln:#fff}}
-:root[data-theme="dark"]{--bg:#000;--fg:#fff;--mu:#999;--ln:#fff}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Helvetica,Arial,sans-serif}
-#app{max-width:720px;margin:0 auto;padding:20px 16px 48px}
-h1{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 16px;font-weight:700}
-#stats{display:flex;border:1px solid var(--ln);margin-bottom:16px}
-#stats div{flex:1;padding:10px 12px;font-size:12px;color:var(--mu);border-right:1px solid var(--ln)}
-#stats div:last-child{border:0}
-#stats b{display:block;font-size:20px;color:var(--fg)}
-nav{display:flex;gap:0;margin-bottom:20px;border:1px solid var(--ln)}
-button{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--ln);padding:8px 14px;cursor:pointer}
-nav button{flex:1;border:0;border-right:1px solid var(--ln);font-size:13px}
-nav button:last-child{border:0}
-button:disabled{opacity:.4;cursor:default}
-button.on{background:var(--fg);color:var(--bg)}
-.top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.top h2{flex:1;margin:0;font-size:18px;text-align:center}
-.top small{display:block;font-size:12px;font-weight:400;color:var(--mu)}
-section{border-top:1px solid var(--ln);padding:12px 0}
-h3{margin:0 0 4px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);font-weight:700}
-section p{margin:0}
-.seg{display:flex;margin-top:12px}
-.seg button{flex:1;margin-right:-1px}
-.sc{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--ln);vertical-align:top}
-th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);font-weight:700}
-.dn td{color:var(--mu);text-decoration:line-through}
-.note{color:var(--mu);font-size:13px;margin:0 0 12px}
-.pl{display:flex;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--ln);padding:10px 0}
-.pl span:first-child{width:96px;flex:none}.pl span:nth-child(2){width:18px;flex:none}.pl span:last-child{color:var(--mu);font-size:13px}
-input[type=number]{width:64px;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--ln);padding:4px 6px}
-input[type=checkbox]{width:18px;height:18px;accent-color:var(--fg)}
-</style></head><body><div id="app">
-<h1>CAT 2026 / Catch-up plan</h1>
-<div id="stats"></div>
-<nav><button data-v="today">Today</button><button data-v="plan">Plan</button><button data-v="bl">Backlog</button><button data-v="mocks">Mocks</button><button data-v="why">Why</button></nav>
-<div id="main"></div></div>
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --bg: #090d16;
+  --bg-subtle: #0f172a;
+  --surface: #141e33;
+  --surface-card: #19243c;
+  --surface-hover: #223252;
+  --surface-active: #2b3e66;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --primary: #6366f1;
+  --primary-glow: rgba(99, 102, 241, 0.3);
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  
+  --emerald: #10b981;
+  --emerald-glow: rgba(16, 185, 129, 0.25);
+  --emerald-surface: rgba(16, 185, 129, 0.12);
+  
+  --amber: #f59e0b;
+  --amber-glow: rgba(245, 158, 11, 0.25);
+  --amber-surface: rgba(245, 158, 11, 0.12);
+  
+  --rose: #f43f5e;
+  --rose-glow: rgba(244, 63, 94, 0.25);
+  --rose-surface: rgba(244, 63, 94, 0.12);
+  
+  --sky: #0ea5e9;
+  --sky-surface: rgba(14, 165, 233, 0.12);
+  
+  --purple: #a855f7;
+  --purple-surface: rgba(168, 85, 247, 0.12);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 24px var(--primary-glow);
+}
+
+html[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-subtle: #f1f5f9;
+  --surface: #ffffff;
+  --surface-card: #ffffff;
+  --surface-hover: #f1f5f9;
+  --surface-active: #e2e8f0;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  
+  --primary: #4f46e5;
+  --primary-glow: rgba(79, 70, 229, 0.2);
+  --primary-light: #6366f1;
+  --primary-dark: #3730a3;
+  
+  --emerald: #059669;
+  --emerald-glow: rgba(5, 150, 105, 0.15);
+  --emerald-surface: rgba(5, 150, 105, 0.1);
+  
+  --amber: #d97706;
+  --amber-glow: rgba(217, 119, 6, 0.15);
+  --amber-surface: rgba(217, 119, 6, 0.1);
+  
+  --rose: #e11d48;
+  --rose-glow: rgba(225, 29, 72, 0.15);
+  --rose-surface: rgba(225, 29, 72, 0.1);
+  
+  --sky: #0284c7;
+  --sky-surface: rgba(2, 132, 199, 0.1);
+  
+  --purple: #9333ea;
+  --purple-surface: rgba(147, 51, 234, 0.1);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 20px var(--primary-glow);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+/* App Shell */
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 16px 80px;
+}
+
+@media (min-width: 768px) {
+  #app {
+    padding: 24px 24px 90px;
+  }
+}
+
+/* Header & Top Bar */
+.header-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, var(--primary), #a855f7);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.brand-title h1 {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.brand-title p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.sync-badge:hover {
+  border-color: var(--primary);
+  background: var(--surface-hover);
+}
+
+.sync-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 8px var(--emerald);
+}
+
+.sync-dot.syncing {
+  background: var(--amber);
+  box-shadow: 0 0 8px var(--amber);
+  animation: pulse 1s infinite;
+}
+
+.sync-dot.offline {
+  background: var(--rose);
+  box-shadow: 0 0 8px var(--rose);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+/* Countdown Ticker Ribbon */
+.countdown-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  background: linear-gradient(145deg, var(--surface), var(--surface-card));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.countdown-val {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary-light);
+  line-height: 1.1;
+}
+
+.countdown-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Stats Cards Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--stat-accent, var(--primary));
+}
+
+.stat-card.accent-emerald { --stat-accent: var(--emerald); }
+.stat-card.accent-amber { --stat-accent: var(--amber); }
+.stat-card.accent-rose { --stat-accent: var(--rose); }
+.stat-card.accent-purple { --stat-accent: var(--purple); }
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.stat-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-icon {
+  font-size: 16px;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.stat-subtitle {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.stat-progress {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+html[data-theme="light"] .stat-progress {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.stat-progress-bar {
+  height: 100%;
+  background: var(--stat-accent, var(--primary));
+  border-radius: 999px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Main Navigation Bar */
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  padding: 4px 0 16px;
+  margin-bottom: 8px;
+  backdrop-filter: blur(12px);
+}
+
+.nav-bar {
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-tab {
+  flex: 1;
+  min-width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.nav-tab:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.nav-tab.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+/* Sections & Views */
+.view-content {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Day Command Center Card (Today's view) */
+.day-hero {
+  background: linear-gradient(160deg, var(--surface), var(--surface-card));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.day-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.day-title-block {
+  text-align: center;
+  flex: 1;
+}
+
+.day-heading {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.day-phase-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-glow);
+  color: var(--primary-light);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-top: 4px;
+}
+
+.today-pill {
+  background: var(--emerald);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.day-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.day-btn:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+.day-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.day-status-selector {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.status-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-btn:hover:not(:disabled) {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.status-btn.selected-done {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: #fff;
+  box-shadow: 0 4px 14px var(--emerald-glow);
+}
+
+.status-btn.selected-partial {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+  box-shadow: 0 4px 14px var(--amber-glow);
+}
+
+.status-btn.selected-missed {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #fff;
+  box-shadow: 0 4px 14px var(--rose-glow);
+}
+
+.status-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.day-status-hint {
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Action Cards */
+.action-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.action-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.action-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.action-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.action-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-light);
+}
+
+.action-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--surface-hover);
+  color: var(--text-muted);
+}
+
+.action-pill.live {
+  background: var(--rose-surface);
+  color: var(--rose);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.action-pill.test {
+  background: var(--purple-surface);
+  color: var(--purple);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.action-pill.backlog {
+  background: var(--amber-surface);
+  color: var(--amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.action-card-body {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.task-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.task-item:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.task-item.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+  background: transparent;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 13.5px;
+}
+
+.tag-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+  text-transform: uppercase;
+}
+
+.tag-qa { background: rgba(99, 102, 241, 0.2); color: var(--primary-light); }
+.tag-dilr { background: rgba(16, 185, 129, 0.2); color: var(--emerald); }
+.tag-varc { background: rgba(245, 158, 11, 0.2); color: var(--amber); }
+
+/* Daily Notes & Focus Timer Container */
+.dual-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .dual-tools-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tool-title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* Timer Component */
+.timer-display-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.timer-digits {
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.timer-preset-btns {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.preset-chip {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-chip:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.preset-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.timer-ctrl-btns {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.timer-btn {
+  flex: 1;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.timer-btn-start {
+  background: var(--emerald);
+  color: #fff;
+  box-shadow: 0 4px 12px var(--emerald-glow);
+}
+
+.timer-btn-pause {
+  background: var(--amber);
+  color: #fff;
+}
+
+.timer-btn-reset {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* Notes Textarea */
+.notes-input {
+  width: 100%;
+  flex: 1;
+  min-height: 140px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  padding: 12px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.notes-input:focus {
+  border-color: var(--primary);
+}
+
+/* Table Utilities */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+}
+
+.data-table th {
+  background: var(--surface-card);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover td {
+  background: var(--surface-hover);
+}
+
+.data-table tr.completed-row td {
+  opacity: 0.55;
+  text-decoration: line-through;
+}
+
+.table-input {
+  width: 68px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 8px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.table-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+/* Search & Filters */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-chip:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.filter-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* Roadmap Grid */
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.day-row-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.day-row-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+  transform: translateX(4px);
+}
+
+.day-row-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 140px;
+}
+
+.day-dot-status {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.day-dot-status.done { color: var(--emerald); }
+.day-dot-status.partial { color: var(--amber); }
+.day-dot-status.missed { color: var(--rose); }
+.day-dot-status.pending { color: var(--text-dim); }
+
+.day-date-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.day-row-content {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.day-row-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--surface-card);
+  color: var(--primary-light);
+  white-space: nowrap;
+}
+
+/* Mock Analytics & SVG Charts */
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.chart-title {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.svg-chart-container {
+  width: 100%;
+  height: 220px;
+}
+
+/* Error Log Modal & Items */
+.error-log-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), #4f46e5);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px var(--primary-glow);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--primary-glow);
+}
+
+.error-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.error-entry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s;
+}
+
+.error-entry-card:hover {
+  border-color: var(--border-strong);
+}
+
+.error-entry-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mistake-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.mistake-concept { background: var(--rose-surface); color: var(--rose); }
+.mistake-silly { background: var(--amber-surface); color: var(--amber); }
+.mistake-time { background: var(--purple-surface); color: var(--purple); }
+.mistake-trap { background: var(--sky-surface); color: var(--sky); }
+
+/* Strategy & Formula Cards */
+.strategy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .strategy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formula-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.formula-card h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary-light);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formula-card ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formula-card li {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.5;
+  background: var(--surface-card);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--primary);
+}
+
+.formula-card li code {
+  font-family: var(--font-mono);
+  color: var(--amber);
+  font-weight: 600;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-overlay.open .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.modal-title {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--primary);
+}
+
+/* Toast Notifications */
+#toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2000;
+}
+
+#toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ROI Calculator Slider */
+.slider-container {
+  margin-bottom: 16px;
+}
+
+.slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.slider-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--primary-light);
+}
+
+.roi-slider {
+  width: 100%;
+  accent-color: var(--primary);
+  height: 6px;
+  background: var(--surface-card);
+  border-radius: 999px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Top Header Bar -->
+  <header class="header-bar">
+    <div class="brand-wrapper">
+      <div class="brand-badge">CAT '26</div>
+      <div class="brand-title">
+        <h1>Master Prep & Strategy</h1>
+        <p>Sprint Roadmap · Mock Analytics · Error Vault</p>
+      </div>
+    </div>
+    
+    <div class="header-actions">
+      <div id="syncBadge" class="sync-badge" title="Click to manage cloud sync & passphrase">
+        <span id="syncDot" class="sync-dot"></span>
+        <span id="syncText">Syncing...</span>
+      </div>
+      <button id="themeToggle" class="icon-btn" title="Toggle Dark/Light Mode">🌙</button>
+      <button id="settingsBtn" class="icon-btn" title="Cloud & Data Settings">⚙️</button>
+    </div>
+  </header>
+
+  <!-- Live Countdown Ticker -->
+  <div class="countdown-ribbon">
+    <div class="countdown-box">
+      <span id="cdDays" class="countdown-val">00</span>
+      <span class="countdown-lbl">Days</span>
+    </div>
+    <div class="countdown-box">
+      <span id="cdHours" class="countdown-val">00</span>
+      <span class="countdown-lbl">Hours</span>
+    </div>
+    <div class="countdown-box">
+      <span id="cdMins" class="countdown-val">00</span>
+      <span class="countdown-lbl">Mins</span>
+    </div>
+    <div class="countdown-box">
+      <span id="cdSecs" class="countdown-val">00</span>
+      <span class="countdown-lbl">Secs</span>
+    </div>
+  </div>
+
+  <!-- Global Stats Header Cards -->
+  <div class="stats-grid">
+    <div class="stat-card accent-primary">
+      <div class="stat-header">
+        <span class="stat-title">Sprint Timeline</span>
+        <span class="stat-icon">⏳</span>
+      </div>
+      <div id="statDaysLeft" class="stat-value">55</div>
+      <div id="statSprintSub" class="stat-subtitle">Days to D-Day</div>
+      <div class="stat-progress">
+        <div id="progDays" class="stat-progress-bar" style="width: 10%;"></div>
+      </div>
+    </div>
+
+    <div class="stat-card accent-emerald">
+      <div class="stat-header">
+        <span class="stat-title">Daily Streak</span>
+        <span class="stat-icon">🔥</span>
+      </div>
+      <div id="statStreak" class="stat-value">0 days</div>
+      <div id="statDoneSub" class="stat-subtitle">0/57 Completed</div>
+      <div class="stat-progress">
+        <div id="progDone" class="stat-progress-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="stat-card accent-amber">
+      <div class="stat-header">
+        <span class="stat-title">Backlog Cleared</span>
+        <span class="stat-icon">📚</span>
+      </div>
+      <div id="statBacklog" class="stat-value">0/21</div>
+      <div id="statBacklogSub" class="stat-subtitle">Tier 1 & 2 items</div>
+      <div class="stat-progress">
+        <div id="progBacklog" class="stat-progress-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="stat-card accent-purple">
+      <div class="stat-header">
+        <span class="stat-title">Mock Score Avg</span>
+        <span class="stat-icon">🎯</span>
+      </div>
+      <div id="statMockAvg" class="stat-value">-</div>
+      <div id="statMockPercentile" class="stat-subtitle">Est. Percentile: -</div>
+      <div class="stat-progress">
+        <div id="progMock" class="stat-progress-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Navigation Bar -->
+  <div class="nav-container">
+    <nav class="nav-bar">
+      <button class="nav-tab active" data-v="today">🎯 Today</button>
+      <button class="nav-tab" data-v="roadmap">📅 Roadmap</button>
+      <button class="nav-tab" data-v="backlog">📚 Backlog</button>
+      <button class="nav-tab" data-v="mocks">📊 Mocks</button>
+      <button class="nav-tab" data-v="errors">🎯 Error Log</button>
+      <button class="nav-tab" data-v="vault">⚡ Formula Vault</button>
+      <button class="nav-tab" data-v="why">🏆 Why CAT & ROI</button>
+    </nav>
+  </div>
+
+  <!-- Dynamic View Container -->
+  <main id="mainView" class="view-content"></main>
+</div>
+
+<!-- Settings & Cloud Sync Modal -->
+<div id="settingsModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title">☁️ Cloud Sync & Data Backup</h2>
+      <button id="closeSettingsBtn" class="icon-btn">✕</button>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Upstash Redis Secret Passphrase</label>
+      <input type="password" id="passphraseInput" class="form-input" placeholder="Enter CAT_KEY passphrase">
+      <p style="font-size:12px;color:var(--text-dim);margin-top:4px;">Set on Vercel as CAT_KEY. Keeps your progress synced across all devices.</p>
+    </div>
+    
+    <div style="display:flex;gap:8px;margin-bottom:18px;">
+      <button id="saveKeyBtn" class="btn-primary" style="flex:1;">Save & Sync</button>
+      <button id="forcePullBtn" class="status-btn" style="flex:1;">Pull from Cloud</button>
+    </div>
+
+    <hr style="border:0;border-top:1px solid var(--border);margin:16px 0;">
+    
+    <div class="form-group">
+      <label class="form-label">Local Backup & Restore</label>
+      <div style="display:flex;gap:8px;">
+        <button id="exportJsonBtn" class="status-btn" style="flex:1;">📥 Export JSON</button>
+        <button id="importJsonBtn" class="status-btn" style="flex:1;">📤 Import JSON</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none;">
+      </div>
+    </div>
+    
+    <div style="margin-top:20px;text-align:center;">
+      <button id="resetAllBtn" style="background:transparent;border:none;color:var(--rose);font-size:12px;cursor:pointer;text-decoration:underline;">Reset All Progress Data</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Error Modal -->
+<div id="errorModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title">📝 Log Mock / Practice Error</h2>
+      <button id="closeErrorModalBtn" class="icon-btn">✕</button>
+    </div>
+    
+    <form id="errorForm">
+      <div class="form-group">
+        <label class="form-label">Source / Mock Number</label>
+        <select id="errMock" class="form-select">
+          <option value="Mock 1">Full Mock #1</option>
+          <option value="Mock 2">Full Mock #2</option>
+          <option value="Mock 3">Full Mock #3</option>
+          <option value="Mock 4">Full Mock #4</option>
+          <option value="Mock 5">Full Mock #5</option>
+          <option value="Mock 6">Full Mock #6</option>
+          <option value="Mock 7">Full Mock #7</option>
+          <option value="Mock 8">Full Mock #8</option>
+          <option value="Mock 9">Full Mock #9</option>
+          <option value="Mock 10">Full Mock #10</option>
+          <option value="Mock 11">Full Mock #11</option>
+          <option value="Mock 12">Full Mock #12</option>
+          <option value="Sectional QA">Sectional QA</option>
+          <option value="Sectional DILR">Sectional DILR</option>
+          <option value="Sectional VARC">Sectional VARC</option>
+          <option value="Daily Practice">Daily Practice</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div>
+          <label class="form-label">Section</label>
+          <select id="errSection" class="form-select">
+            <option value="QA">Quant (QA)</option>
+            <option value="DILR">LRDI</option>
+            <option value="VARC">VARC</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Mistake Type</label>
+          <select id="errType" class="form-select">
+            <option value="Silly / Calculation">Calculation / Silly Mistake</option>
+            <option value="Concept Gap">Concept Gap / Unclear Formula</option>
+            <option value="Question Misread">Misread Question / Constraint</option>
+            <option value="Option Trap">Option Trap (Elimination failure)</option>
+            <option value="Time Panic">Time Panic / Rushed Guess</option>
+            <option value="Poor Set Selection">Poor Set Selection (DILR)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Topic / Question Type</label>
+        <input type="text" id="errTopic" class="form-input" placeholder="e.g. Time Speed Distance, Venn Diagram, RC Inference" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Question Summary / What Went Wrong</label>
+        <textarea id="errDetail" class="form-textarea" rows="2" placeholder="Briefly describe what caught you off guard..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Key Rule to Remember (The Fix)</label>
+        <input type="text" id="errTakeaway" class="form-input" placeholder="e.g. Always check if time is in seconds or hours before calculating!" required>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width:100%;margin-top:10px;">Save Error to Vault</button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast element -->
+<div id="toast"><span>Notification</span></div>
+
 <script>
-const D={"days":[{"d":"2026-10-04","ph":"A","b":"VARC 6 RC question types; VARC 9 RC eliminating options; Quant 8 Profit & Loss","l":"","p":"Heavy recording day (3 classes), so lighter practice. QA: Profit & Loss + percentage mixed set. DILR: 1 arrangement/distribution set. VARC: 3 RC passages using the elimination method","t":""},{"d":"2026-10-05","ph":"A","b":"LRDI 16 Venn Diagram 01; VARC 10 Para-jumble concepts","l":"2 PM RC Inference & VIC: ATTEND (only if you cleared RC types + eliminating options on Oct 4; otherwise take as recording)","p":"QA: Equations + Exponents problem set. DILR: 2 Venn sets. VARC: 3 RC passages (inference focus)","t":""},{"d":"2026-10-06","ph":"A","b":"Quant 12 Function I","l":"8 PM LR Puzzles 1: ATTEND","p":"QA: Function I problems. DILR: 1 Venn + 1 DI set. VARC: 3 RC passages","t":""},{"d":"2026-10-07","ph":"A","b":"Quant 15 Function II","l":"8 PM Venn 02: ATTEND","p":"QA: Function I-II problems. DILR: 2 Venn sets. VARC: 3 RC passages","t":""},{"d":"2026-10-08","ph":"A","b":"Quant 6 Inequalities I","l":"8 PM Distance-Time-Speed 1: ATTEND","p":"QA: Inequalities I + TSD problems from tonight's class. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},{"d":"2026-10-09","ph":"A","b":"Quant 9 Inequalities II","l":"2 PM RC Retrieval: ATTEND. 8 PM Function III: ATTEND (Function I-II cleared)","p":"Light day (2 classes). QA: Inequalities II + Function III problems. DILR: 1 set. VARC: 2 RC passages","t":""},{"d":"2026-10-10","ph":"A","b":"Quant 10 Work Rate & Time 1; Quant 13 WRT 2 + Mixtures 1","l":"","p":"QA: work-time + mixtures problem sets, 1 TSD set. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},{"d":"2026-10-11","ph":"A","b":"","l":"","p":"Analyse the mock: log every error by topic and cause (concept / calculation / time)","t":"FULL MOCK #1 (diagnostic; the score doesn't matter)"},{"d":"2026-10-12","ph":"A","b":"LRDI 7 Games & Tournaments 1","l":"8 PM RC Main idea & Primary purpose: ATTEND","p":"DILR: Games & Tournaments sets. QA: 25 mixed arithmetic questions. VARC: 3 RC passages","t":""},{"d":"2026-10-13","ph":"A","b":"LRDI 9 Games & Tournaments 2","l":"8 PM LR Puzzles 2: ATTEND","p":"DILR: G&T + puzzle sets. QA: algebra mixed set. VARC: 3 RC passages","t":""},{"d":"2026-10-14","ph":"A","b":"LRDI 11 Maps & Networks 1","l":"8 PM Venn 03: ATTEND","p":"DILR: network sets + 1 Venn set. QA: TSD set. VARC: 3 RC passages","t":""},{"d":"2026-10-15","ph":"A","b":"LRDI 13 Maps & Networks 2","l":"2 PM Distance-Time-Speed 2: ATTEND","p":"DILR: network sets, timed. QA: TSD 1-2 problems. VARC: 3 RC passages","t":""},{"d":"2026-10-16","ph":"A","b":"Quant 14 Removal & Replacement","l":"2 PM RC Tone & Structure: ATTEND. 8 PM Triangle I: ATTEND","p":"Light day (2 classes). QA: removal-replacement + triangle basics. DILR: 1 set. VARC: 2 RC passages","t":""},{"d":"2026-10-17","ph":"A","b":"Quant 11 Logarithm; VARC 11 Para-jumbles Non-MCQs (missed live on Oct 3, take as recording)","l":"8 PM CR6 workshop: SKIP (use the slot for DILR sets)","p":"QA: logs + triangle problems. DILR: 3 timed sets across LR types learned. VARC: 3 RC passages","t":""},{"d":"2026-10-18","ph":"A","b":"LRDI 8 Caselets; LRDI 10 Misc Charts 01","l":"","p":"DILR: caselet + mixed chart sets (calculation speed). QA: Triangle I problems. VARC: 4 RC passages","t":""},{"d":"2026-10-19","ph":"B","b":"LRDI 12 Misc Charts 02; LRDI 14 Multiple Charts","l":"8 PM RC Strengthening & Weakening: ATTEND","p":"DILR: chart sets. QA: mixed arithmetic set. VARC: 3 RC passages","t":""},{"d":"2026-10-20","ph":"B","b":"","l":"8 PM LR Sets 1: ATTEND","p":"DILR: LR sets from the PYQ book, timed at 20 min each. QA: topic-wise PYQs on cleared topics","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-10-21","ph":"B","b":"LRDI 23 Missing Data (take as recording; clashes with LR Sets 2)","l":"8 PM LR Sets 2: ATTEND","p":"QA: arithmetic PYQs. VARC: 3 RC passages. DILR: 1 Missing Data set","t":"Sectional: QA (morning) + analysis"},{"d":"2026-10-22","ph":"B","b":"","l":"8 PM Distance-Time-Speed 3: ATTEND","p":"QA: TSD 1-3 problem sets. DILR: 2 LR sets. VARC: 3 RC passages + 5 para-jumbles","t":"Sectional: VARC (morning) + analysis"},{"d":"2026-10-23","ph":"B","b":"","l":"8 PM Triangle II: ATTEND","p":"QA: triangle problems (I-II). DILR: 2 mixed sets. VARC: 3 RC passages","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-10-24","ph":"B","b":"Optional: Interest or CR1-5, only if every priority item is Cleared","l":"","p":"QA: weak-topic repair from the error log. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},{"d":"2026-10-25","ph":"B","b":"","l":"","p":"Analyse Mock #2 fully before anything else","t":"FULL MOCK #2 + analysis"},{"d":"2026-10-26","ph":"B","b":"","l":"8 PM RC PYQs 2024: ATTEND","p":"QA: mixed PYQs. DILR: 2 sets. VARC: re-attempt the 2024 RC passages after class","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-10-27","ph":"B","b":"","l":"8 PM Para Odd One Out: ATTEND","p":"QA: algebra + arithmetic mixed set. DILR: 2 sets. VARC: odd-one-out + para-jumble practice","t":"Sectional: QA (morning) + analysis"},{"d":"2026-10-28","ph":"B","b":"","l":"8 PM LR Sets 3: ATTEND (CAT PYQ practice class clashes: recording or skip)","p":"DILR: LR set practice after class. QA: triangle + TSD mixed set. VARC: 3 RC passages","t":"Sectional: VARC (morning) + analysis"},{"d":"2026-10-29","ph":"B","b":"Optional: the Oct 28 PYQ-practice recording","l":"2 PM Circle: ATTEND. 8 PM Number System 1: ATTEND","p":"Light day (2 classes). QA: circle + factors/divisibility problems. VARC: 2 RC passages","t":""},{"d":"2026-10-30","ph":"B","b":"","l":"8 PM Quadrilaterals & Polygons: ATTEND","p":"QA: geometry problems (triangles, circles, polygons). DILR: 2 sets. VARC: 3 RC passages","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-10-31","ph":"B","b":"","l":"8 PM Para Completion: ATTEND","p":"QA: number system problems. DILR: 2 sets. VARC: para-completion + summary practice","t":"Sectional: QA (morning) + analysis"},{"d":"2026-11-01","ph":"B","b":"","l":"8 PM RC PYQs 2023: ATTEND","p":"Analyse Mock #3 before class; re-attempt the 2023 RC passages after","t":"FULL MOCK #3 (morning) + analysis"},{"d":"2026-11-02","ph":"B","b":"","l":"8 PM RC PYQs 2022: ATTEND","p":"QA: weak-topic repair. DILR: 2 sets. VARC: 2022 RC passages after class","t":"Sectional: DILR (morning) + analysis"},{"d":"2026-11-03","ph":"B","b":"","l":"","p":"QA: number system + geometry mixed set. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},{"d":"2026-11-04","ph":"B","b":"","l":"8 PM Number System 2: ATTEND","p":"Analyse Mock #4 in the afternoon. QA: remainders and powers problems","t":"FULL MOCK #4 (morning)"},{"d":"2026-11-05","ph":"B","b":"","l":"2 PM Mensuration & Coordinate Geometry I: ATTEND. 8 PM Number System 3: ATTEND","p":"Light day (2 classes). QA: mensuration + HCF-LCM problems. VARC: 2 RC passages","t":""},{"d":"2026-11-06","ph":"B","b":"","l":"","p":"QA: mensuration + number system PYQs. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: DILR + analysis"},{"d":"2026-11-07","ph":"B","b":"","l":"8 PM VA Workshop: ATTEND (or watch the recording)","p":"Analyse Mock #5 after the mock","t":"FULL MOCK #5 (morning) + analysis"},{"d":"2026-11-08","ph":"B","b":"Optional: CR1-5 or Interest, only if every priority item is Cleared","l":"","p":"QA: repair the top 3 weak topics from the error log. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},{"d":"2026-11-09","ph":"C","b":"","l":"","p":"Analyse Mock #6 after the mock; update the error log","t":"FULL MOCK #6 + analysis"},{"d":"2026-11-10","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #6. DILR: 3 timed sets. VARC: 3 RC passages","t":"Sectional: DILR + analysis"},{"d":"2026-11-11","ph":"C","b":"","l":"","p":"Analyse Mock #7 after the mock; update the error log","t":"FULL MOCK #7 + analysis"},{"d":"2026-11-12","ph":"C","b":"","l":"2 PM Coordinate Geometry II: ATTEND. 8 PM Average + Series 1: ATTEND (or recording within 24h)","p":"Light day (2 classes). QA: series problems. VARC: 2 RC passages","t":""},{"d":"2026-11-13","ph":"C","b":"","l":"2 PM Series 2: ATTEND. 8 PM Permutation & Combination: ATTEND (or recordings within 24h)","p":"Light day (2 classes). QA: series + P&C problems","t":""},{"d":"2026-11-14","ph":"C","b":"","l":"2 PM Probability: ATTEND (or recording)","p":"QA: P&C + probability problems after class. Analyse Mock #8","t":"FULL MOCK #8 (morning) + analysis"},{"d":"2026-11-15","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #8. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: VARC + analysis"},{"d":"2026-11-16","ph":"C","b":"","l":"8 PM RC PYQs 2021: OPTIONAL (skip live; do the passages timed yourself)","p":"Analyse Mock #9 after the mock","t":"FULL MOCK #9 + analysis"},{"d":"2026-11-17","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #9. DILR: 2 sets. VARC: 3 RC passages","t":"Sectional: QA + analysis"},{"d":"2026-11-18","ph":"C","b":"","l":"","p":"Analyse Mock #10 after the mock","t":"FULL MOCK #10 + analysis"},{"d":"2026-11-19","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #10. VARC: 3 RC passages","t":"Sectional: DILR + analysis"},{"d":"2026-11-20","ph":"C","b":"","l":"","p":"Analyse Mock #11 after the mock","t":"FULL MOCK #11 + analysis"},{"d":"2026-11-21","ph":"C","b":"","l":"","p":"Weak-topic repair, error-log revision, 2 DILR sets, 3 RC passages","t":""},{"d":"2026-11-22","ph":"C","b":"","l":"","p":"Analyse Mock #12 after the mock; final error-log update","t":"FULL MOCK #12 + analysis"},{"d":"2026-11-23","ph":"D","b":"","l":"","p":"Error-log revision. QA formula-sheet pass. 1 DILR set","t":""},{"d":"2026-11-24","ph":"D","b":"","l":"","p":"Light day: review the Mock #12 analysis","t":"Optional: light mock #13 or two sectionals"},{"d":"2026-11-25","ph":"D","b":"","l":"","p":"Formula sheet + light RC/VA practice. 1 DILR set","t":""},{"d":"2026-11-26","ph":"D","b":"","l":"","p":"1 DILR set + 1 RC passage only. Sleep early","t":""},{"d":"2026-11-27","ph":"D","b":"","l":"","p":"Rest. Check admit card, photo ID, test-centre route and slot time","t":""},{"d":"2026-11-28","ph":"D","b":"","l":"","p":"Rest day. No new problems","t":""},{"d":"2026-11-29","ph":"X","b":"","l":"","p":"CAT 2026 exam day","t":"CAT 2026"}],"bl":[{"r":"VARC 6","n":"RC: Types of questions asked in RC","t":"Tier 1","w":"04 Oct"},{"r":"VARC 9","n":"RC: Grounds of eliminating incorrect answer choices","t":"Tier 1","w":"04 Oct"},{"r":"Quant 8","n":"Arithmetic: Profit and Loss","t":"Tier 1","w":"04 Oct"},{"r":"LRDI 16","n":"LR-based DI: Venn Diagram 01","t":"Tier 1","w":"05 Oct"},{"r":"VARC 10","n":"Para-jumbles: Concepts and MCQs","t":"Tier 1","w":"05 Oct"},{"r":"Quant 12","n":"Algebra: Function I","t":"Tier 1","w":"06 Oct"},{"r":"Quant 15","n":"Algebra: Function II","t":"Tier 1","w":"07 Oct"},{"r":"Quant 6","n":"Algebra: Inequalities I","t":"Tier 1","w":"08 Oct"},{"r":"Quant 9","n":"Algebra: Inequalities II","t":"Tier 1","w":"09 Oct"},{"r":"Quant 10","n":"Arithmetic: Work Rate and Time 1","t":"Tier 2","w":"10 Oct"},{"r":"Quant 13","n":"Arithmetic: Work Rate and Time 2 + Mixtures 1","t":"Tier 2","w":"10 Oct"},{"r":"LRDI 7","n":"LR: Games & Tournaments 1","t":"Tier 1","w":"12 Oct"},{"r":"LRDI 9","n":"LR: Games & Tournaments 2","t":"Tier 1","w":"13 Oct"},{"r":"LRDI 11","n":"LR: Maps & Networks 1","t":"Tier 1","w":"14 Oct"},{"r":"LRDI 13","n":"LR: Maps & Networks 2","t":"Tier 1","w":"15 Oct"},{"r":"Quant 14","n":"Arithmetic: Removal and Replacement","t":"Tier 2","w":"16 Oct"},{"r":"Quant 11","n":"Algebra: Logarithm","t":"Tier 2","w":"17 Oct"},{"r":"LRDI 8","n":"DI: Caselets","t":"Tier 2","w":"18 Oct"},{"r":"LRDI 10","n":"DI: Misc Charts 01","t":"Tier 2","w":"18 Oct"},{"r":"LRDI 12","n":"DI: Misc Charts 02","t":"Tier 2","w":"19 Oct"},{"r":"LRDI 14","n":"DI: Multiple Charts","t":"Tier 2","w":"19 Oct"},{"r":"Quant 17","n":"Arithmetic: Interest","t":"Tier 3","w":"Optional"},{"r":"VARC 3","n":"CR 1: Foundation, Analysing the Argument, Identify the Assumption","t":"Tier 3","w":"Optional"},{"r":"VARC 4","n":"CR 2: Strengthen and Weaken the Argument","t":"Tier 3","w":"Optional"},{"r":"VARC 5","n":"CR 3: Identify the Logical Flaw","t":"Tier 3","w":"Optional"},{"r":"VARC 7","n":"CR 4: Identify the Inference","t":"Tier 3","w":"Optional"},{"r":"VARC 8","n":"CR 5: Resolve the Paradox; Similar Structure Arguments","t":"Tier 3","w":"Optional"}],"mk":[{"n":1,"d":"11 Oct","ty":"Full (diagnostic)"},{"n":2,"d":"25 Oct","ty":"Full"},{"n":3,"d":"01 Nov","ty":"Full"},{"n":4,"d":"04 Nov","ty":"Full"},{"n":5,"d":"07 Nov","ty":"Full"},{"n":6,"d":"09 Nov","ty":"Full"},{"n":7,"d":"11 Nov","ty":"Full"},{"n":8,"d":"14 Nov","ty":"Full"},{"n":9,"d":"16 Nov","ty":"Full"},{"n":10,"d":"18 Nov","ty":"Full"},{"n":11,"d":"20 Nov","ty":"Full"},{"n":12,"d":"22 Nov","ty":"Full"},{"n":13,"d":"24 Nov","ty":"Optional light mock"}],"ph":{"A":"Backlog sprint","B":"Learn + sectionals","C":"Mock phase","D":"Taper","X":"Exam day"}};
-const K='catplan1',MK={Done:'\u25cf',Partial:'\u25d0',Missed:'\u2715'};
-let S={d:{},w:{},s:{},m:{}},ref=null,tm,view='today',cur=0;
-try{const x=JSON.parse(localStorage.getItem(K));if(x)S=x}catch(e){}
-const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
-const tdf=()=>{const n=new Date();return n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate())};let td=tdf();
-const fd=s=>new Date(s+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
-cur=Math.max(0,D.days.findIndex(x=>x.d>=td));if(td>D.days[D.days.length-1].d)cur=D.days.length-1;
-let KEY=localStorage.getItem('catkey')||'',asked=false,busy=false;
-const api=(m,b)=>fetch('/api/progress',{method:m,headers:{'content-type':'application/json','x-key':KEY},body:b?JSON.stringify(b):undefined,signal:AbortSignal.timeout(8000)});
-function push(){clearTimeout(tm);tm=setTimeout(()=>{if(KEY)api('PUT',{s:JSON.stringify(S)}).catch(()=>{})},600)}
-function save(){S.t=Date.now();try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}push()}
-async function pull(){try{
-if(!KEY&&!asked){asked=true;KEY=(prompt('Passphrase to sync your progress (asked once per device):')||'').trim()}
-if(!KEY)return;
-let r=await api('GET');
-if(r.status===401){localStorage.removeItem('catkey');KEY=(prompt('Wrong passphrase. Try again:')||'').trim();if(!KEY)return;r=await api('GET')}
-if(!r.ok){if(r.status===401)KEY='';return}
-localStorage.setItem('catkey',KEY);
-const j=await r.json(),rem=j.s?JSON.parse(j.s):null;
-if(rem&&(rem.t||0)>(S.t||0)){S=rem;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
-else if(!rem||(S.t||0)>(rem.t||0))push()}catch(e){}}
-async function sync(){if(busy)return;busy=true;try{await pull()}finally{busy=false;sweep();render()}}
-function sweep(){let c=false;D.days.forEach(x=>{if(x.d<td&&!S.d[x.d]){S.d[x.d]='Missed';c=true}});if(c)save()}
-function vToday(){const x=D.days[cur],st=S.d[x.d]||'';
-const r=(l,v)=>v?`<section><h3>${l}</h3><p>${v}</p></section>`:'';
-return `<div class="top"><button data-a="prev">\u2190</button><h2>${fd(x.d)}<small>${x.d===td?'today \u00b7 ':''}${D.ph[x.ph]}</small></h2><button data-a="next">\u2192</button></div>`
-+r('Clear backlog',x.b)+r('Live class',x.l)+r('Practice',x.p)+r('Test',x.t)
-+`<div class="seg">${['Done','Partial','Missed'].map(s=>`<button data-a="st" data-v="${s}" class="${st===s?'on':''}" ${x.d===td?'':'disabled'}>${s}</button>`).join('')}</div><p class="note" style="margin-top:8px">${x.d<td?'Day closed. Unmarked days become Missed.':x.d>td?'You can only mark a day on that day.':'Mark Done before midnight, or it becomes Missed.'}</p>`}
-function vPlan(){return D.days.map((x,i)=>`<button class="pl" data-a="go" data-i="${i}"><span>${fd(x.d)}</span><span>${MK[S.d[x.d]]||'\u25cb'}</span><span>${x.t||(x.l?x.l.split('.')[0]:'')}</span></button>`).join('')}
-function vBl(){return `<p class="note">Tick Watched, then Solved once you finish same-day problems. Tier 3 is optional.</p><div class="sc"><table><tr><th>Class</th><th>Tier</th><th>Plan</th><th>Watched</th><th>Solved</th></tr>`
-+D.bl.map(b=>`<tr class="${S.w[b.r]&&S.s[b.r]?'dn':''}"><td>${b.r}<br>${b.n}</td><td>${b.t.replace('Tier ','')}</td><td>${b.w}</td><td><input type="checkbox" data-a="w" data-r="${b.r}" ${S.w[b.r]?'checked':''}></td><td><input type="checkbox" data-a="s" data-r="${b.r}" ${S.s[b.r]?'checked':''}></td></tr>`).join('')+`</table></div>`}
-const tot=n=>{const v=(S.m[n]||[]).filter(x=>x!=='').map(Number);return v.length?v.reduce((a,b)=>a+b,0):'-'};
-function vMocks(){return `<p class="note">Marks per section. Analyse each mock for about twice as long as you took it.</p><div class="sc"><table><tr><th>#</th><th>Date</th><th>VARC</th><th>DILR</th><th>QA</th><th>Total</th></tr>`
-+D.mk.map(m=>`<tr><td>${m.n}</td><td>${m.d}</td>${[0,1,2].map(k=>`<td><input type="number" data-a="m" data-n="${m.n}" data-k="${k}" value="${(S.m[m.n]||[])[k]??''}"></td>`).join('')}<td id="t${m.n}">${tot(m.n)}</td></tr>`).join('')+`</table></div>`}
-function vWhy(){const R=(a,b,c)=>`<tr><td>${a}</td><td>${b}</td><td>${c}</td></tr>`;
-return `<p class="note">Average CTC from 2026 final placements unless marked, as reported by institutes and aggregators. Averages include outliers, so check the median too.</p><div class="sc"><table><tr><th>Path</th><th>Average CTC</th><th>Median</th></tr>`
-+R('Without MBA (your estimate)','\u20b94-8 L','-')+R('IIM Calcutta','\u20b936 L','\u20b935 L')+R('IIM Lucknow','\u20b933.2 L','\u20b932.9 L')
-+R('IIM Indore','\u20b927.3 L','\u20b925 L')+R('IIT Bombay SJMSOM','\u20b928.2 L','\u20b926 L')+R('IIFT Delhi MBA (IB), 2025','\u20b931.3 L','\u20b926 L')
-+R('Newer IIMs (Raipur, Rohtak, etc.)','about \u20b918-22 L','-')+`</table></div>`
-+`<section><h3>The rough maths</h3><p>Newer IIM fees are about \u20b917-22 L, plus two years of salary you give up (about \u20b910 L at \u20b95 L a year). A \u20b920 L average against a \u20b96 L job is about \u20b914 L extra a year, so the cost is recovered in roughly 2-3 years, before tax and loan interest. Illustrative arithmetic, not a forecast.</p></section>`
-+`<section><h3>What 90 percentile means</h3><p>It clears the minimum bar at most IIMs and makes you a serious candidate at the newer ones. IITs, IIFT and the top old IIMs usually need higher percentiles. Check each institute's category cut-offs.</p></section>`
-+`<section><h3>Be honest with yourself</h3><p>Averages are not guarantees. Fees may be loan-funded, and some IIMs offer fee support, so check each one. The gap over a \u20b94-8 L job is large, but it only pays off if you convert a call and finish with a strong profile.</p></section>`}
-function render(){const done=Object.values(S.d).filter(v=>v==='Done').length;
-const pr=D.bl.filter(b=>b.t!=='Tier 3'),pc=pr.filter(b=>S.w[b.r]&&S.s[b.r]).length;
-const left=Math.max(0,Math.ceil((new Date('2026-11-29T00:00:00')-new Date(td+'T00:00:00'))/864e5));
-$('stats').innerHTML=`<div><b>${left}</b>days to CAT</div><div><b>${done}/${D.days.length}</b>days done</div><div><b>${pc}/${pr.length}</b>backlog cleared</div>`;
-document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===view));
-$('main').innerHTML=({today:vToday,plan:vPlan,bl:vBl,mocks:vMocks,why:vWhy})[view]()}
-document.querySelector('nav').addEventListener('click',e=>{const b=e.target.closest('button');if(b){view=b.dataset.v;render();window.scrollTo(0,0)}});
-$('main').addEventListener('click',e=>{const b=e.target.closest('button[data-a]');if(!b)return;const a=b.dataset.a;
-if(a==='prev'&&cur>0)cur--;else if(a==='next'&&cur<D.days.length-1)cur++;
-else if(a==='go'){cur=+b.dataset.i;view='today';window.scrollTo(0,0)}
-else if(a==='st'){const k=D.days[cur].d;if(k!==td)return;S.d[k]=S.d[k]===b.dataset.v?'':b.dataset.v;save()}
-render()});
-$('main').addEventListener('change',e=>{const t=e.target,a=t.dataset.a;
-if(a==='w'||a==='s'){S[a][t.dataset.r]=t.checked;save();render()}
-else if(a==='m'){const n=t.dataset.n;S.m[n]=S.m[n]||['','',''];S.m[n][+t.dataset.k]=t.value;save();$('t'+n).textContent=tot(n)}});
-render();sync();
-setInterval(()=>{const t=tdf();if(t!==td){td=t;sync()}},30000);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden){td=tdf();sync()}});
-</script></body></html>
+// Master Plan Dataset
+const D = {
+  days: [
+    {"d":"2026-10-04","ph":"A","b":"VARC 6 RC question types; VARC 9 RC eliminating options; Quant 8 Profit & Loss","l":"","p":"Heavy recording day (3 classes), so lighter practice. QA: Profit & Loss + percentage mixed set. DILR: 1 arrangement/distribution set. VARC: 3 RC passages using the elimination method","t":""},
+    {"d":"2026-10-05","ph":"A","b":"LRDI 16 Venn Diagram 01; VARC 10 Para-jumble concepts","l":"2 PM RC Inference & VIC: ATTEND (only if you cleared RC types + eliminating options on Oct 4; otherwise take as recording)","p":"QA: Equations + Exponents problem set. DILR: 2 Venn sets. VARC: 3 RC passages (inference focus)","t":""},
+    {"d":"2026-10-06","ph":"A","b":"Quant 12 Function I","l":"8 PM LR Puzzles 1: ATTEND","p":"QA: Function I problems. DILR: 1 Venn + 1 DI set. VARC: 3 RC passages","t":""},
+    {"d":"2026-10-07","ph":"A","b":"Quant 15 Function II","l":"8 PM Venn 02: ATTEND","p":"QA: Function I-II problems. DILR: 2 Venn sets. VARC: 3 RC passages","t":""},
+    {"d":"2026-10-08","ph":"A","b":"Quant 6 Inequalities I","l":"8 PM Distance-Time-Speed 1: ATTEND","p":"QA: Inequalities I + TSD problems from tonight's class. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},
+    {"d":"2026-10-09","ph":"A","b":"Quant 9 Inequalities II","l":"2 PM RC Retrieval: ATTEND. 8 PM Function III: ATTEND (Function I-II cleared)","p":"Light day (2 classes). QA: Inequalities II + Function III problems. DILR: 1 set. VARC: 2 RC passages","t":""},
+    {"d":"2026-10-10","ph":"A","b":"Quant 10 Work Rate & Time 1; Quant 13 WRT 2 + Mixtures 1","l":"","p":"QA: work-time + mixtures problem sets, 1 TSD set. DILR: 2 sets. VARC: 3 RC passages + 5 para-jumbles","t":""},
+    {"d":"2026-10-11","ph":"A","b":"","l":"","p":"Analyse the mock: log every error by topic and cause (concept / calculation / time)","t":"FULL MOCK #1 (diagnostic; the score doesn't matter)"},
+    {"d":"2026-10-12","ph":"A","b":"LRDI 7 Games & Tournaments 1","l":"8 PM RC Main idea & Primary purpose: ATTEND","p":"DILR: Games & Tournaments sets. QA: 25 mixed arithmetic questions. VARC: 3 RC passages","t":""},
+    {"d":"2026-10-13","ph":"A","b":"LRDI 9 Games & Tournaments 2","l":"8 PM LR Puzzles 2: ATTEND","p":"DILR: G&T + puzzle sets. QA: algebra mixed set. VARC: 3 RC passages","t":""},
+    {"d":"2026-10-14","ph":"A","b":"LRDI 11 Maps & Networks 1","l":"8 PM Venn 03: ATTEND","p":"DILR: network sets + 1 Venn set. QA: TSD set. VARC: 3 RC passages","t":""},
+    {"d":"2026-10-15","ph":"A","b":"LRDI 13 Maps & Networks 2","l":"2 PM Distance-Time-Speed 2: ATTEND","p":"DILR: network sets, timed. QA: TSD 1-2 problems. VARC: 3 RC passages","t":""},
+    {"d":"2026-10-16","ph":"A","b":"Quant 14 Removal & Replacement","l":"2 PM RC Tone & Structure: ATTEND. 8 PM Triangle I: ATTEND","p":"Light day (2 classes). QA: removal-replacement + triangle basics. DILR: 1 set. VARC: 2 RC passages","t":""},
+    {"d":"2026-10-17","ph":"A","b":"Quant 11 Logarithm; VARC 11 Para-jumbles Non-MCQs (missed live on Oct 3, take as recording)","l":"8 PM CR6 workshop: SKIP (use the slot for DILR sets)","p":"QA: logs + triangle problems. DILR: 3 timed sets across LR types learned. VARC: 3 RC passages","t":""},
+    {"d":"2026-10-18","ph":"A","b":"LRDI 8 Caselets; LRDI 10 Misc Charts 01","l":"","p":"DILR: caselet + mixed chart sets (calculation speed). QA: Triangle I problems. VARC: 4 RC passages","t":""},
+    {"d":"2026-10-19","ph":"B","b":"LRDI 12 Misc Charts 02; LRDI 14 Multiple Charts","l":"8 PM RC Strengthening & Weakening: ATTEND","p":"DILR: chart sets. QA: mixed arithmetic set. VARC: 3 RC passages","t":""},
+    {"d":"2026-10-20","ph":"B","b":"","l":"8 PM LR Sets 1: ATTEND","p":"DILR: LR sets from the PYQ book, timed at 20 min each. QA: topic-wise PYQs on cleared topics","t":"Sectional: DILR (morning) + analysis"},
+    {"d":"2026-10-21","ph":"B","b":"LRDI 23 Missing Data (take as recording; clashes with LR Sets 2)","l":"8 PM LR Sets 2: ATTEND","p":"QA: arithmetic PYQs. VARC: 3 RC passages. DILR: 1 Missing Data set","t":"Sectional: QA (morning) + analysis"},
+    {"d":"2026-10-22","ph":"B","b":"","l":"8 PM Distance-Time-Speed 3: ATTEND","p":"QA: TSD 1-3 problem sets. DILR: 2 LR sets. VARC: 3 RC passages + 5 para-jumbles","t":"Sectional: VARC (morning) + analysis"},
+    {"d":"2026-10-23","ph":"B","b":"","l":"8 PM Triangle II: ATTEND","p":"QA: triangle problems (I-II). DILR: 2 mixed sets. VARC: 3 RC passages","t":"Sectional: DILR (morning) + analysis"},
+    {"d":"2026-10-24","ph":"B","b":"Optional: Interest or CR1-5, only if every priority item is Cleared","l":"","p":"QA: weak-topic repair from the error log. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},
+    {"d":"2026-10-25","ph":"B","b":"","l":"","p":"Analyse Mock #2 fully before anything else","t":"FULL MOCK #2 + analysis"},
+    {"d":"2026-10-26","ph":"B","b":"","l":"8 PM RC PYQs 2024: ATTEND","p":"QA: mixed PYQs. DILR: 2 sets. VARC: re-attempt the 2024 RC passages after class","t":"Sectional: DILR (morning) + analysis"},
+    {"d":"2026-10-27","ph":"B","b":"","l":"8 PM Para Odd One Out: ATTEND","p":"QA: algebra + arithmetic mixed set. DILR: 2 sets. VARC: odd-one-out + para-jumble practice","t":"Sectional: QA (morning) + analysis"},
+    {"d":"2026-10-28","ph":"B","b":"","l":"8 PM LR Sets 3: ATTEND (CAT PYQ practice class clashes: recording or skip)","p":"DILR: LR set practice after class. QA: triangle + TSD mixed set. VARC: 3 RC passages","t":"Sectional: VARC (morning) + analysis"},
+    {"d":"2026-10-29","ph":"B","b":"Optional: the Oct 28 PYQ-practice recording","l":"2 PM Circle: ATTEND. 8 PM Number System 1: ATTEND","p":"Light day (2 classes). QA: circle + factors/divisibility problems. VARC: 2 RC passages","t":""},
+    {"d":"2026-10-30","ph":"B","b":"","l":"8 PM Quadrilaterals & Polygons: ATTEND","p":"QA: geometry problems (triangles, circles, polygons). DILR: 2 sets. VARC: 3 RC passages","t":"Sectional: DILR (morning) + analysis"},
+    {"d":"2026-10-31","ph":"B","b":"","l":"8 PM Para Completion: ATTEND","p":"QA: number system problems. DILR: 2 sets. VARC: para-completion + summary practice","t":"Sectional: QA (morning) + analysis"},
+    {"d":"2026-11-01","ph":"B","b":"","l":"8 PM RC PYQs 2023: ATTEND","p":"Analyse Mock #3 before class; re-attempt the 2023 RC passages after","t":"FULL MOCK #3 (morning) + analysis"},
+    {"d":"2026-11-02","ph":"B","b":"","l":"8 PM RC PYQs 2022: ATTEND","p":"QA: weak-topic repair. DILR: 2 sets. VARC: 2022 RC passages after class","t":"Sectional: DILR (morning) + analysis"},
+    {"d":"2026-11-03","ph":"B","b":"","l":"","p":"QA: number system + geometry mixed set. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},
+    {"d":"2026-11-04","ph":"B","b":"","l":"8 PM Number System 2: ATTEND","p":"Analyse Mock #4 in the afternoon. QA: remainders and powers problems","t":"FULL MOCK #4 (morning)"},
+    {"d":"2026-11-05","ph":"B","b":"","l":"2 PM Mensuration & Coordinate Geometry I: ATTEND. 8 PM Number System 3: ATTEND","p":"Light day (2 classes). QA: mensuration + HCF-LCM problems. VARC: 2 RC passages","t":""},
+    {"d":"2026-11-06","ph":"B","b":"","l":"","p":"QA: mensuration + number system PYQs. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: DILR + analysis"},
+    {"d":"2026-11-07","ph":"B","b":"","l":"8 PM VA Workshop: ATTEND (or watch the recording)","p":"Analyse Mock #5 after the mock","t":"FULL MOCK #5 (morning) + analysis"},
+    {"d":"2026-11-08","ph":"B","b":"Optional: CR1-5 or Interest, only if every priority item is Cleared","l":"","p":"QA: repair the top 3 weak topics from the error log. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: QA + analysis"},
+    {"d":"2026-11-09","ph":"C","b":"","l":"","p":"Analyse Mock #6 after the mock; update the error log","t":"FULL MOCK #6 + analysis"},
+    {"d":"2026-11-10","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #6. DILR: 3 timed sets. VARC: 3 RC passages","t":"Sectional: DILR + analysis"},
+    {"d":"2026-11-11","ph":"C","b":"","l":"","p":"Analyse Mock #7 after the mock; update the error log","t":"FULL MOCK #7 + analysis"},
+    {"d":"2026-11-12","ph":"C","b":"","l":"2 PM Coordinate Geometry II: ATTEND. 8 PM Average + Series 1: ATTEND (or recording within 24h)","p":"Light day (2 classes). QA: series problems. VARC: 2 RC passages","t":""},
+    {"d":"2026-11-13","ph":"C","b":"","l":"2 PM Series 2: ATTEND. 8 PM Permutation & Combination: ATTEND (or recordings within 24h)","p":"Light day (2 classes). QA: series + P&C problems","t":""},
+    {"d":"2026-11-14","ph":"C","b":"","l":"2 PM Probability: ATTEND (or recording)","p":"QA: P&C + probability problems after class. Analyse Mock #8","t":"FULL MOCK #8 (morning) + analysis"},
+    {"d":"2026-11-15","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #8. DILR: 3 timed sets. VARC: 4 RC passages","t":"Sectional: VARC + analysis"},
+    {"d":"2026-11-16","ph":"C","b":"","l":"8 PM RC PYQs 2021: OPTIONAL (skip live; do the passages timed yourself)","p":"Analyse Mock #9 after the mock","t":"FULL MOCK #9 + analysis"},
+    {"d":"2026-11-17","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #9. DILR: 2 sets. VARC: 3 RC passages","t":"Sectional: QA + analysis"},
+    {"d":"2026-11-18","ph":"C","b":"","l":"","p":"Analyse Mock #10 after the mock","t":"FULL MOCK #10 + analysis"},
+    {"d":"2026-11-19","ph":"C","b":"","l":"","p":"Repair weak topics from Mock #10. VARC: 3 RC passages","t":"Sectional: DILR + analysis"},
+    {"d":"2026-11-20","ph":"C","b":"","l":"","p":"Analyse Mock #11 after the mock","t":"FULL MOCK #11 + analysis"},
+    {"d":"2026-11-21","ph":"C","b":"","l":"","p":"Weak-topic repair, error-log revision, 2 DILR sets, 3 RC passages","t":""},
+    {"d":"2026-11-22","ph":"C","b":"","l":"","p":"Analyse Mock #12 after the mock; final error-log update","t":"FULL MOCK #12 + analysis"},
+    {"d":"2026-11-23","ph":"D","b":"","l":"","p":"Error-log revision. QA formula-sheet pass. 1 DILR set","t":""},
+    {"d":"2026-11-24","ph":"D","b":"","l":"","p":"Light day: review the Mock #12 analysis","t":"Optional: light mock #13 or two sectionals"},
+    {"d":"2026-11-25","ph":"D","b":"","l":"","p":"Formula sheet + light RC/VA practice. 1 DILR set","t":""},
+    {"d":"2026-11-26","ph":"D","b":"","l":"","p":"1 DILR set + 1 RC passage only. Sleep early","t":""},
+    {"d":"2026-11-27","ph":"D","b":"","l":"","p":"Rest. Check admit card, photo ID, test-centre route and slot time","t":""},
+    {"d":"2026-11-28","ph":"D","b":"","l":"","p":"Rest day. No new problems","t":""},
+    {"d":"2026-11-29","ph":"X","b":"","l":"","p":"CAT 2026 exam day","t":"CAT 2026"}
+  ],
+  bl: [
+    {"r":"VARC 6","n":"RC: Types of questions asked in RC","t":"Tier 1","w":"04 Oct","sub":"VARC"},
+    {"r":"VARC 9","n":"RC: Grounds of eliminating incorrect answer choices","t":"Tier 1","w":"04 Oct","sub":"VARC"},
+    {"r":"Quant 8","n":"Arithmetic: Profit and Loss","t":"Tier 1","w":"04 Oct","sub":"Quant"},
+    {"r":"LRDI 16","n":"LR-based DI: Venn Diagram 01","t":"Tier 1","w":"05 Oct","sub":"LRDI"},
+    {"r":"VARC 10","n":"Para-jumbles: Concepts and MCQs","t":"Tier 1","w":"05 Oct","sub":"VARC"},
+    {"r":"Quant 12","n":"Algebra: Function I","t":"Tier 1","w":"06 Oct","sub":"Quant"},
+    {"r":"Quant 15","n":"Algebra: Function II","t":"Tier 1","w":"07 Oct","sub":"Quant"},
+    {"r":"Quant 6","n":"Algebra: Inequalities I","t":"Tier 1","w":"08 Oct","sub":"Quant"},
+    {"r":"Quant 9","n":"Algebra: Inequalities II","t":"Tier 1","w":"09 Oct","sub":"Quant"},
+    {"r":"Quant 10","n":"Arithmetic: Work Rate and Time 1","t":"Tier 2","w":"10 Oct","sub":"Quant"},
+    {"r":"Quant 13","n":"Arithmetic: Work Rate and Time 2 + Mixtures 1","t":"Tier 2","w":"10 Oct","sub":"Quant"},
+    {"r":"LRDI 7","n":"LR: Games & Tournaments 1","t":"Tier 1","w":"12 Oct","sub":"LRDI"},
+    {"r":"LRDI 9","n":"LR: Games & Tournaments 2","t":"Tier 1","w":"13 Oct","sub":"LRDI"},
+    {"r":"LRDI 11","n":"LR: Maps & Networks 1","t":"Tier 1","w":"14 Oct","sub":"LRDI"},
+    {"r":"LRDI 13","n":"LR: Maps & Networks 2","t":"Tier 1","w":"15 Oct","sub":"LRDI"},
+    {"r":"Quant 14","n":"Arithmetic: Removal and Replacement","t":"Tier 2","w":"16 Oct","sub":"Quant"},
+    {"r":"Quant 11","n":"Algebra: Logarithm","t":"Tier 2","w":"17 Oct","sub":"Quant"},
+    {"r":"LRDI 8","n":"DI: Caselets","t":"Tier 2","w":"18 Oct","sub":"LRDI"},
+    {"r":"LRDI 10","n":"DI: Misc Charts 01","t":"Tier 2","w":"18 Oct","sub":"LRDI"},
+    {"r":"LRDI 12","n":"DI: Misc Charts 02","t":"Tier 2","w":"19 Oct","sub":"LRDI"},
+    {"r":"LRDI 14","n":"DI: Multiple Charts","t":"Tier 2","w":"19 Oct","sub":"LRDI"},
+    {"r":"Quant 17","n":"Arithmetic: Interest","t":"Tier 3","w":"Optional","sub":"Quant"},
+    {"r":"VARC 3","n":"CR 1: Foundation, Analysing the Argument, Identify the Assumption","t":"Tier 3","w":"Optional","sub":"VARC"},
+    {"r":"VARC 4","n":"CR 2: Strengthen and Weaken the Argument","t":"Tier 3","w":"Optional","sub":"VARC"},
+    {"r":"VARC 5","n":"CR 3: Identify the Logical Flaw","t":"Tier 3","w":"Optional","sub":"VARC"},
+    {"r":"VARC 7","n":"CR 4: Identify the Inference","t":"Tier 3","w":"Optional","sub":"VARC"},
+    {"r":"VARC 8","n":"CR 5: Resolve the Paradox; Similar Structure Arguments","t":"Tier 3","w":"Optional","sub":"VARC"}
+  ],
+  mk: [
+    {"n":1,"d":"11 Oct","ty":"Full (Diagnostic)"},
+    {"n":2,"d":"25 Oct","ty":"Full Mock"},
+    {"n":3,"d":"01 Nov","ty":"Full Mock"},
+    {"n":4,"d":"04 Nov","ty":"Full Mock"},
+    {"n":5,"d":"07 Nov","ty":"Full Mock"},
+    {"n":6,"d":"09 Nov","ty":"Full Mock"},
+    {"n":7,"d":"11 Nov","ty":"Full Mock"},
+    {"n":8,"d":"14 Nov","ty":"Full Mock"},
+    {"n":9,"d":"16 Nov","ty":"Full Mock"},
+    {"n":10,"d":"18 Nov","ty":"Full Mock"},
+    {"n":11,"d":"20 Nov","ty":"Full Mock"},
+    {"n":12,"d":"22 Nov","ty":"Full Mock"},
+    {"n":13,"d":"24 Nov","ty":"Optional Light Mock"}
+  ],
+  ph: {
+    "A": "Phase A: Backlog Sprint",
+    "B": "Phase B: Learn + Sectionals",
+    "C": "Phase C: Mock Phase",
+    "D": "Phase D: Taper & Rest",
+    "X": "Exam Day: CAT 2026"
+  }
+};
+
+// Application State
+const STORAGE_KEY = 'catplan1';
+let S = {
+  d: {},      // Day status: 'Done', 'Partial', 'Missed'
+  w: {},      // Watched backlog items: { "VARC 6": true }
+  s: {},      // Solved backlog items: { "VARC 6": true }
+  m: {},      // Mock scores: { 1: [varc, dilr, qa] }
+  tasks: {},  // Checklist tasks: { "2026-10-05_0": true }
+  notes: {},  // Daily notes: { "2026-10-05": "Notes text" }
+  errors: [], // Error log entries
+  t: 0        // Last updated timestamp
+};
+
+try {
+  const loaded = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if (loaded) S = Object.assign(S, loaded);
+  if (!S.tasks) S.tasks = {};
+  if (!S.notes) S.notes = {};
+  if (!S.errors) S.errors = [];
+} catch(e) {}
+
+let currentView = 'today';
+let curDayIndex = 0;
+let pushTimer = null;
+let KEY = localStorage.getItem('catkey') || '';
+let isSyncing = false;
+
+// Utility Helpers
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2, '0');
+const getTodayStr = () => {
+  const n = new Date();
+  return `${n.getFullYear()}-${pad(n.getMonth()+1)}-${pad(n.getDate())}`;
+};
+let todayDate = getTodayStr();
+
+const formatDateFriendly = s => {
+  const parts = s.split('-');
+  const d = new Date(parts[0], parts[1]-1, parts[2]);
+  return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+};
+
+// Initialize Current Day
+curDayIndex = Math.max(0, D.days.findIndex(x => x.d >= todayDate));
+if (todayDate > D.days[D.days.length - 1].d) curDayIndex = D.days.length - 1;
+
+// Toast Utility
+function showToast(msg) {
+  const t = $('toast');
+  t.innerHTML = `<span>${msg}</span>`;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// Sound Synthesis (Web Audio API)
+function playChime(type = 'success') {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    
+    if (type === 'success') {
+      osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+      osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.15); // G5
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.35);
+    } else {
+      osc.frequency.setValueAtTime(440, ctx.currentTime);
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.2);
+    }
+  } catch(e) {}
+}
+
+// Cloud API & Persistence
+const api = (m, b) => fetch('/api/progress', {
+  method: m,
+  headers: { 'content-type': 'application/json', 'x-key': KEY },
+  body: b ? JSON.stringify(b) : undefined,
+  signal: AbortSignal.timeout(8000)
+});
+
+function schedulePush() {
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(() => {
+    if (KEY) {
+      setSyncStatus('syncing', 'Syncing to cloud...');
+      api('PUT', { s: JSON.stringify(S) })
+        .then(r => {
+          if (r.ok) setSyncStatus('online', 'Cloud Synced');
+          else if (r.status === 401) setSyncStatus('offline', 'Auth Failed (Click ⚙️)');
+          else setSyncStatus('offline', 'Sync Error');
+        })
+        .catch(() => setSyncStatus('offline', 'Offline (Saved Locally)'));
+    } else {
+      setSyncStatus('offline', 'Saved Locally (Set ⚙️ to sync)');
+    }
+  }, 600);
+}
+
+function saveState() {
+  S.t = Date.now();
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(S));
+  } catch(e) {}
+  schedulePush();
+}
+
+function setSyncStatus(state, text) {
+  const dot = $('syncDot');
+  const txt = $('syncText');
+  dot.className = 'sync-dot ' + (state === 'syncing' ? 'syncing' : state === 'offline' ? 'offline' : '');
+  txt.textContent = text;
+}
+
+async function pullCloudData() {
+  if (!KEY) {
+    setSyncStatus('offline', 'Saved Locally (Set ⚙️ to sync)');
+    return;
+  }
+  setSyncStatus('syncing', 'Checking cloud...');
+  try {
+    const r = await api('GET');
+    if (r.status === 401) {
+      setSyncStatus('offline', 'Wrong Passphrase (Click ⚙️)');
+      return;
+    }
+    if (!r.ok) {
+      setSyncStatus('offline', 'Offline');
+      return;
+    }
+    const j = await r.json();
+    const rem = j.s ? JSON.parse(j.s) : null;
+    if (rem && (rem.t || 0) > (S.t || 0)) {
+      S = Object.assign(S, rem);
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(S)); } catch(e) {}
+      showToast('☁️ Latest progress synced from cloud!');
+    } else if (!rem || (S.t || 0) > (rem.t || 0)) {
+      schedulePush();
+    }
+    setSyncStatus('online', 'Cloud Synced');
+  } catch(e) {
+    setSyncStatus('offline', 'Offline');
+  }
+}
+
+async function fullSync() {
+  if (isSyncing) return;
+  isSyncing = true;
+  try {
+    await pullCloudData();
+  } finally {
+    isSyncing = false;
+    sweepMissedDays();
+    renderStats();
+    renderCurrentView();
+  }
+}
+
+function sweepMissedDays() {
+  let changed = false;
+  D.days.forEach(x => {
+    if (x.d < todayDate && !S.d[x.d]) {
+      S.d[x.d] = 'Missed';
+      changed = true;
+    }
+  });
+  if (changed) saveState();
+}
+
+// Percentile Calculation Engine
+function estimatePercentile(score) {
+  if (score === null || score === undefined || isNaN(score) || score === '') return { p: '-', tag: '-' };
+  const s = Number(score);
+  if (s >= 95) return { p: '99.5+ %ile', tag: 'Top IIM A/B/C Level' };
+  if (s >= 82) return { p: '99.0 %ile', tag: 'Top IIMs / FMS' };
+  if (s >= 70) return { p: '97.5 %ile', tag: 'IIM L/K/I / SJMSOM' };
+  if (s >= 60) return { p: '95.0 %ile', tag: 'New IIMs / MDI / IIFT' };
+  if (s >= 50) return { p: '90.0 %ile', tag: 'Baby IIMs / Tier-1 Calls' };
+  if (s >= 40) return { p: '85.0 %ile', tag: 'Cutoff Qualifier' };
+  if (s >= 30) return { p: '75.0 %ile', tag: 'Foundation Stage' };
+  return { p: '< 70 %ile', tag: 'Needs Fast Rebuild' };
+}
+
+// Countdown Ticker
+function updateCountdown() {
+  const target = new Date('2026-11-29T08:30:00+05:30').getTime();
+  const now = new Date().getTime();
+  const diff = target - now;
+  
+  if (diff <= 0) {
+    $('cdDays').textContent = '00';
+    $('cdHours').textContent = '00';
+    $('cdMins').textContent = '00';
+    $('cdSecs').textContent = '00';
+    return;
+  }
+  
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((diff % (1000 * 60)) / 1000);
+  
+  $('cdDays').textContent = pad(d);
+  $('cdHours').textContent = pad(h);
+  $('cdMins').textContent = pad(m);
+  $('cdSecs').textContent = pad(s);
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// Global Stats Bar
+function renderStats() {
+  const totalDays = D.days.length;
+  const doneDays = Object.values(S.d).filter(v => v === 'Done').length;
+  const partialDays = Object.values(S.d).filter(v => v === 'Partial').length;
+  
+  // Calculate Streak
+  let streak = 0;
+  const sortedDays = [...D.days].reverse();
+  for (const day of sortedDays) {
+    if (day.d <= todayDate) {
+      if (S.d[day.d] === 'Done') streak++;
+      else if (day.d < todayDate) break;
+    }
+  }
+  
+  // Backlog
+  const priorityBacklog = D.bl.filter(b => b.t !== 'Tier 3');
+  const clearedBacklog = priorityBacklog.filter(b => S.w[b.r] && S.s[b.r]).length;
+  const backlogPct = Math.round((clearedBacklog / priorityBacklog.length) * 100) || 0;
+  
+  // Days Remaining
+  const targetTime = new Date('2026-11-29T00:00:00').getTime();
+  const curTime = new Date(todayDate + 'T00:00:00').getTime();
+  const daysLeft = Math.max(0, Math.ceil((targetTime - curTime) / 864e5));
+  const daysPct = Math.min(100, Math.round(((totalDays - daysLeft) / totalDays) * 100));
+  
+  // Mock Average
+  let mockScores = [];
+  D.mk.forEach(m => {
+    const scores = (S.m[m.n] || []).filter(x => x !== '' && x !== undefined).map(Number);
+    if (scores.length === 3) {
+      mockScores.push(scores.reduce((a, b) => a + b, 0));
+    }
+  });
+  const avgScore = mockScores.length ? Math.round(mockScores.reduce((a, b) => a + b, 0) / mockScores.length) : null;
+  const est = estimatePercentile(avgScore);
+  
+  $('statDaysLeft').textContent = daysLeft;
+  $('statSprintSub').textContent = `Day ${Math.max(1, totalDays - daysLeft)} of ${totalDays}`;
+  $('progDays').style.width = `${Math.max(5, daysPct)}%`;
+  
+  $('statStreak').textContent = `${streak} ${streak === 1 ? 'day' : 'days'}`;
+  $('statDoneSub').textContent = `${doneDays} done · ${partialDays} partial`;
+  $('progDone').style.width = `${Math.min(100, Math.round((doneDays / totalDays) * 100))}%`;
+  
+  $('statBacklog').textContent = `${clearedBacklog}/${priorityBacklog.length}`;
+  $('statBacklogSub').textContent = `${backlogPct}% priority cleared`;
+  $('progBacklog').style.width = `${backlogPct}%`;
+  
+  $('statMockAvg').textContent = avgScore !== null ? `${avgScore} marks` : '-';
+  $('statMockPercentile').textContent = est.p !== '-' ? `${est.p} (${est.tag})` : 'Log 3 sectionals to see %ile';
+  $('progMock').style.width = `${Math.min(100, (avgScore || 0) / 100 * 100)}%`;
+}
+
+// Timer Engine
+let timerDuration = 40 * 60;
+let timerRemaining = timerDuration;
+let timerInterval = null;
+let timerRunning = false;
+
+function formatTimer(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${pad(m)}:${pad(s)}`;
+}
+
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  timerInterval = setInterval(() => {
+    if (timerRemaining > 0) {
+      timerRemaining--;
+      updateTimerUI();
+    } else {
+      pauseTimer();
+      playChime('success');
+      showToast('🎉 Sectional Focus Timer Completed! Great job!');
+    }
+  }, 1000);
+  updateTimerUI();
+}
+
+function pauseTimer() {
+  timerRunning = false;
+  clearInterval(timerInterval);
+  updateTimerUI();
+}
+
+function resetTimer(newMinutes = null) {
+  pauseTimer();
+  if (newMinutes) timerDuration = newMinutes * 60;
+  timerRemaining = timerDuration;
+  updateTimerUI();
+}
+
+function updateTimerUI() {
+  const el = $('timerDigits');
+  if (el) el.textContent = formatTimer(timerRemaining);
+  const startBtn = $('timerStartBtn');
+  if (startBtn) {
+    startBtn.textContent = timerRunning ? 'Pause' : 'Start Focus';
+    startBtn.className = timerRunning ? 'timer-btn timer-btn-pause' : 'timer-btn timer-btn-start';
+  }
+}
+
+// View: Today's Command Center
+function renderTodayView() {
+  const day = D.days[curDayIndex];
+  const isToday = day.d === todayDate;
+  const status = S.d[day.d] || '';
+  
+  // Parse Practice Quota into individual checkable tasks
+  let practiceTasks = [];
+  if (day.p) {
+    const rawItems = day.p.split('. ');
+    practiceTasks = rawItems.map((item, idx) => {
+      const taskId = `${day.d}_p_${idx}`;
+      const isDone = !!S.tasks[taskId];
+      
+      let badgeClass = 'tag-qa';
+      let tagText = 'QA';
+      if (item.includes('DILR') || item.includes('Venn') || item.includes('LR')) {
+        badgeClass = 'tag-dilr';
+        tagText = 'DILR';
+      } else if (item.includes('VARC') || item.includes('RC') || item.includes('para')) {
+        badgeClass = 'tag-varc';
+        tagText = 'VARC';
+      }
+      
+      return `
+        <div class="task-item ${isDone ? 'completed' : ''}" data-task-id="${taskId}">
+          <input type="checkbox" class="task-checkbox" ${isDone ? 'checked' : ''}>
+          <div class="task-text">
+            <span class="tag-badge ${badgeClass}">${tagText}</span>
+            ${item.replace(/^(QA:|DILR:|VARC:)\s*/i, '')}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Parse Backlog into actionable checklist
+  let backlogCards = '';
+  if (day.b) {
+    const items = day.b.split('; ');
+    const listHtml = items.map(code => {
+      const trimmed = code.trim();
+      const blItem = D.bl.find(x => trimmed.startsWith(x.r));
+      const watched = S.w[trimmed] || (blItem && S.w[blItem.r]);
+      const solved = S.s[trimmed] || (blItem && S.s[blItem.r]);
+      const rKey = blItem ? blItem.r : trimmed;
+      
+      return `
+        <div class="task-item ${watched && solved ? 'completed' : ''}">
+          <input type="checkbox" data-bl-key="${rKey}" class="bl-fast-toggle" ${watched && solved ? 'checked' : ''}>
+          <div class="task-text">
+            <strong>${trimmed}</strong> ${blItem ? '— ' + blItem.n : ''}
+            <div style="font-size:11px;color:var(--text-dim);margin-top:2px;">
+              ${watched ? '🎬 Watched' : '⏳ Recording Pending'} · ${solved ? '✍️ Practice Solved' : '⏳ Solved Pending'}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    backlogCards = `
+      <div class="action-card">
+        <div class="action-card-header">
+          <span class="action-card-title">⚡ Backlog Lectures to Clear</span>
+          <span class="action-pill backlog">Target Recording</span>
+        </div>
+        <div class="task-checklist">${listHtml}</div>
+      </div>
+    `;
+  }
+
+  // Live Class Card
+  let liveCard = '';
+  if (day.l) {
+    liveCard = `
+      <div class="action-card">
+        <div class="action-card-header">
+          <span class="action-card-title">🔴 Live Class Schedule</span>
+          <span class="action-pill live">Attend or Recording</span>
+        </div>
+        <div class="action-card-body">
+          <p style="font-weight:600;font-size:14.5px;">${day.l}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  // Mock / Test Card
+  let testCard = '';
+  if (day.t) {
+    testCard = `
+      <div class="action-card" style="border-left:4px solid var(--purple);">
+        <div class="action-card-header">
+          <span class="action-card-title">📝 Scheduled Test / Mock</span>
+          <span class="action-pill test">High Priority</span>
+        </div>
+        <div class="action-card-body">
+          <p style="font-size:15px;font-weight:700;color:var(--purple);">${day.t}</p>
+          <p style="font-size:12.5px;color:var(--text-muted);margin-top:4px;">Take timed in exam environment. Log sectional scores in the Mocks tab.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  const savedNote = S.notes[day.d] || '';
+
+  return `
+    <div class="day-hero">
+      <div class="day-nav-header">
+        <button id="prevDayBtn" class="day-btn" ${curDayIndex === 0 ? 'disabled' : ''}>←</button>
+        <div class="day-title-block">
+          <div class="day-heading">
+            ${formatDateFriendly(day.d)}
+            ${isToday ? '<span class="today-pill">Today</span>' : ''}
+          </div>
+          <div class="day-phase-tag">${D.ph[day.ph]}</div>
+        </div>
+        <button id="nextDayBtn" class="day-btn" ${curDayIndex === D.days.length - 1 ? 'disabled' : ''}>→</button>
+      </div>
+
+      <div class="day-status-selector">
+        <button class="status-btn ${status === 'Done' ? 'selected-done' : ''}" data-day-status="Done" ${!isToday ? 'disabled' : ''}>
+          <span>●</span> Marked Done
+        </button>
+        <button class="status-btn ${status === 'Partial' ? 'selected-partial' : ''}" data-day-status="Partial" ${!isToday ? 'disabled' : ''}>
+          <span>◐</span> Partial
+        </button>
+        <button class="status-btn ${status === 'Missed' ? 'selected-missed' : ''}" data-day-status="Missed" ${!isToday ? 'disabled' : ''}>
+          <span>✕</span> Missed
+        </button>
+      </div>
+      <p class="day-status-hint">
+        ${day.d < todayDate ? '🔒 Day closed. Unmarked past days are archived.' : day.d > todayDate ? '🔮 Future day: previewing roadmap plan.' : '⚡ Mark your day before midnight to maintain your streak!'}
+      </p>
+    </div>
+
+    <div class="action-cards">
+      ${backlogCards}
+      ${liveCard}
+      <div class="action-card">
+        <div class="action-card-header">
+          <span class="action-card-title">✍️ Daily Practice Target</span>
+          <span class="action-pill">Self Practice</span>
+        </div>
+        <div class="task-checklist">${practiceTasks || '<p style="color:var(--text-dim);font-size:13px;">Follow standard sectional revision.</p>'}</div>
+      </div>
+      ${testCard}
+    </div>
+
+    <div class="dual-tools-grid">
+      <!-- Sectional Focus Timer -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-title">⏱️ Sectional Focus Timer</span>
+          <span style="font-size:12px;color:var(--text-dim);">CAT Slot Mode</span>
+        </div>
+        <div class="timer-display-box">
+          <div id="timerDigits" class="timer-digits">${formatTimer(timerRemaining)}</div>
+          <div class="timer-preset-btns">
+            <button class="preset-chip ${timerDuration === 40*60 ? 'active' : ''}" data-timer="40">40m Sectional</button>
+            <button class="preset-chip ${timerDuration === 25*60 ? 'active' : ''}" data-timer="25">25m Sprint</button>
+            <button class="preset-chip ${timerDuration === 15*60 ? 'active' : ''}" data-timer="15">15m Review</button>
+          </div>
+          <div class="timer-ctrl-btns">
+            <button id="timerStartBtn" class="timer-btn timer-btn-start">${timerRunning ? 'Pause' : 'Start Focus'}</button>
+            <button id="timerResetBtn" class="timer-btn timer-btn-reset">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Daily Reflection Journal -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-title">📝 Reflection & Scratchpad</span>
+          <span style="font-size:12px;color:var(--text-dim);">Auto-saves</span>
+        </div>
+        <textarea id="dailyNotesInput" class="notes-input" placeholder="Note your mistakes, formulas to revise, or questions to ask in class...">${savedNote}</textarea>
+      </div>
+    </div>
+  `;
+}
+
+// View: Full Sprint Roadmap
+function renderRoadmapView() {
+  return `
+    <div class="filter-bar">
+      <input type="text" id="roadmapSearch" class="search-input" placeholder="🔍 Search topics (e.g. Venn, Function, Mock, Triangle)...">
+      <div class="filter-chips">
+        <button class="filter-chip active" data-phase-filter="ALL">All Days</button>
+        <button class="filter-chip" data-phase-filter="A">Phase A</button>
+        <button class="filter-chip" data-phase-filter="B">Phase B</button>
+        <button class="filter-chip" data-phase-filter="C">Phase C (Mocks)</button>
+        <button class="filter-chip" data-phase-filter="D">Phase D (Taper)</button>
+        <button class="filter-chip" data-phase-filter="TEST">Test Days</button>
+      </div>
+    </div>
+
+    <div id="roadmapList" class="roadmap-grid">
+      ${renderRoadmapItems('ALL', '')}
+    </div>
+  `;
+}
+
+function renderRoadmapItems(phaseFilter, searchQuery) {
+  const query = searchQuery.toLowerCase().trim();
+  
+  return D.days.filter(x => {
+    if (phaseFilter === 'TEST' && !x.t) return false;
+    if (phaseFilter !== 'ALL' && phaseFilter !== 'TEST' && x.ph !== phaseFilter) return false;
+    if (query) {
+      const match = x.d.includes(query) || (x.b && x.b.toLowerCase().includes(query)) || (x.l && x.l.toLowerCase().includes(query)) || (x.p && x.p.toLowerCase().includes(query)) || (x.t && x.t.toLowerCase().includes(query));
+      if (!match) return false;
+    }
+    return true;
+  }).map((x, i) => {
+    const originalIndex = D.days.findIndex(d => d.d === x.d);
+    const st = S.d[x.d];
+    let dotClass = 'pending';
+    let dotIcon = '○';
+    if (st === 'Done') { dotClass = 'done'; dotIcon = '●'; }
+    else if (st === 'Partial') { dotClass = 'partial'; dotIcon = '◐'; }
+    else if (st === 'Missed') { dotClass = 'missed'; dotIcon = '✕'; }
+    
+    return `
+      <div class="day-row-card" data-jump-index="${originalIndex}">
+        <div class="day-row-left">
+          <span class="day-dot-status ${dotClass}">${dotIcon}</span>
+          <span class="day-date-text">${formatDateFriendly(x.d)}</span>
+        </div>
+        <div class="day-row-content">
+          ${x.t ? `<strong>${x.t}</strong>` : (x.l ? x.l : x.p)}
+        </div>
+        <div class="day-row-badge">
+          ${x.t ? 'TEST' : `PHASE ${x.ph}`}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// View: Backlog Tracker
+function renderBacklogView() {
+  const quantTotal = D.bl.filter(x => x.sub === 'Quant').length;
+  const quantDone = D.bl.filter(x => x.sub === 'Quant' && S.w[x.r] && S.s[x.r]).length;
+  
+  const dilrTotal = D.bl.filter(x => x.sub === 'LRDI').length;
+  const dilrDone = D.bl.filter(x => x.sub === 'LRDI' && S.w[x.r] && S.s[x.r]).length;
+  
+  const varcTotal = D.bl.filter(x => x.sub === 'VARC').length;
+  const varcDone = D.bl.filter(x => x.sub === 'VARC' && S.w[x.r] && S.s[x.r]).length;
+
+  return `
+    <div class="stats-grid" style="margin-bottom:16px;">
+      <div class="stat-card accent-primary">
+        <div class="stat-header"><span class="stat-title">Quant Backlog</span></div>
+        <div class="stat-value">${quantDone}/${quantTotal}</div>
+        <div class="stat-progress"><div class="stat-progress-bar" style="width:${Math.round(quantDone/quantTotal*100)}%"></div></div>
+      </div>
+      <div class="stat-card accent-emerald">
+        <div class="stat-header"><span class="stat-title">LRDI Backlog</span></div>
+        <div class="stat-value">${dilrDone}/${dilrTotal}</div>
+        <div class="stat-progress"><div class="stat-progress-bar" style="width:${Math.round(dilrDone/dilrTotal*100)}%"></div></div>
+      </div>
+      <div class="stat-card accent-amber">
+        <div class="stat-header"><span class="stat-title">VARC Backlog</span></div>
+        <div class="stat-value">${varcDone}/${varcTotal}</div>
+        <div class="stat-progress"><div class="stat-progress-bar" style="width:${Math.round(varcDone/varcTotal*100)}%"></div></div>
+      </div>
+      <div class="stat-card accent-purple">
+        <div class="stat-header"><span class="stat-title">Sprint Rule</span></div>
+        <div style="font-size:13px;color:var(--text);font-weight:600;margin-top:4px;">Watch recording + Solve same-day problem set</div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" id="backlogSearch" class="search-input" placeholder="🔍 Search topic or class code...">
+      <div class="filter-chips">
+        <button class="filter-chip active" data-bl-filter="ALL">All Topics</button>
+        <button class="filter-chip" data-bl-filter="Tier 1">Tier 1 (Critical)</button>
+        <button class="filter-chip" data-bl-filter="Tier 2">Tier 2</button>
+        <button class="filter-chip" data-bl-filter="Tier 3">Tier 3 (Optional)</button>
+        <button class="filter-chip" data-bl-filter="Quant">Quant</button>
+        <button class="filter-chip" data-bl-filter="LRDI">LRDI</button>
+        <button class="filter-chip" data-bl-filter="VARC">VARC</button>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Class Code</th>
+            <th>Topic & Focus</th>
+            <th>Tier</th>
+            <th>Target Date</th>
+            <th style="text-align:center;">🎬 Watched</th>
+            <th style="text-align:center;">✍️ Solved</th>
+          </tr>
+        </thead>
+        <tbody id="backlogTableBody">
+          ${renderBacklogRows('ALL', '')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderBacklogRows(filter, query) {
+  const q = query.toLowerCase().trim();
+  
+  return D.bl.filter(b => {
+    if (filter === 'Quant' || filter === 'LRDI' || filter === 'VARC') {
+      if (b.sub !== filter) return false;
+    } else if (filter !== 'ALL' && b.t !== filter) {
+      return false;
+    }
+    if (q && !b.r.toLowerCase().includes(q) && !b.n.toLowerCase().includes(q)) return false;
+    return true;
+  }).map(b => {
+    const isWatched = !!S.w[b.r];
+    const isSolved = !!S.s[b.r];
+    const isCompleted = isWatched && isSolved;
+    
+    return `
+      <tr class="${isCompleted ? 'completed-row' : ''}">
+        <td><strong>${b.r}</strong></td>
+        <td>${b.n}</td>
+        <td>
+          <span class="tag-badge ${b.t === 'Tier 1' ? 'tag-qa' : b.t === 'Tier 2' ? 'tag-dilr' : 'tag-varc'}">
+            ${b.t}
+          </span>
+        </td>
+        <td>${b.w}</td>
+        <td style="text-align:center;">
+          <input type="checkbox" class="task-checkbox" data-bl-action="w" data-bl-code="${b.r}" ${isWatched ? 'checked' : ''}>
+        </td>
+        <td style="text-align:center;">
+          <input type="checkbox" class="task-checkbox" data-bl-action="s" data-bl-code="${b.r}" ${isSolved ? 'checked' : ''}>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// View: Mock Analytics
+function renderMocksView() {
+  const getMockTotal = n => {
+    const v = (S.m[n] || []).filter(x => x !== '' && x !== undefined).map(Number);
+    return v.length ? v.reduce((a, b) => a + b, 0) : null;
+  };
+
+  // Generate SVG Score Trend Chart
+  const mockDataPoints = [];
+  D.mk.forEach((m, idx) => {
+    const tot = getMockTotal(m.n);
+    if (tot !== null) mockDataPoints.push({ x: idx, mock: m.n, total: tot, name: `Mock ${m.n}` });
+  });
+
+  let chartSvg = `<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:13px;">Enter your mock sectional scores below to generate real-time performance analytics!</div>`;
+  
+  if (mockDataPoints.length > 0) {
+    const width = 800;
+    const height = 180;
+    const padding = 36;
+    const maxScore = Math.max(80, ...mockDataPoints.map(p => p.total)) + 10;
+    const minScore = 0;
+    
+    const scaleX = i => padding + (i / Math.max(1, D.mk.length - 1)) * (width - padding * 2);
+    const scaleY = s => height - padding - ((s - minScore) / (maxScore - minScore)) * (height - padding * 2);
+    
+    const pointsStr = mockDataPoints.map(p => `${scaleX(p.x)},${scaleY(p.total)}`).join(' ');
+    
+    chartSvg = `
+      <svg viewBox="0 0 ${width} ${height}" style="width:100%;height:100%;overflow:visible;">
+        <!-- Target Line for 99%ile (75 Marks) -->
+        <line x1="${padding}" y1="${scaleY(75)}" x2="${width-padding}" y2="${scaleY(75)}" stroke="var(--emerald)" stroke-dasharray="4,4" stroke-width="1.5" opacity="0.6"/>
+        <text x="${width-padding-4}" y="${scaleY(75)-6}" fill="var(--emerald)" font-size="11" font-family="var(--font-mono)" text-anchor="end">99%ile Target (75 Marks)</text>
+        
+        <!-- Axes -->
+        <line x1="${padding}" y1="${height-padding}" x2="${width-padding}" y2="${height-padding}" stroke="var(--border-strong)" stroke-width="1"/>
+        
+        <!-- Score Line -->
+        <polyline points="${pointsStr}" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <!-- Data Dots -->
+        ${mockDataPoints.map(p => `
+          <circle cx="${scaleX(p.x)}" cy="${scaleY(p.total)}" r="5" fill="var(--primary-light)" stroke="var(--surface)" stroke-width="2"/>
+          <text x="${scaleX(p.x)}" y="${scaleY(p.total)-10}" fill="var(--text)" font-family="var(--font-mono)" font-size="12" font-weight="700" text-anchor="middle">${p.total}</text>
+          <text x="${scaleX(p.x)}" y="${height-padding+16}" fill="var(--text-dim)" font-family="var(--font-mono)" font-size="11" text-anchor="middle">M${p.mock}</text>
+        `).join('')}
+      </svg>
+    `;
+  }
+
+  return `
+    <div class="chart-card">
+      <div class="chart-header">
+        <span class="chart-title">📈 Mock Score Progression & 99%ile Target</span>
+        <div class="chart-legend">
+          <span class="legend-item"><span class="legend-dot" style="background:var(--primary);"></span> Your Score</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--emerald);"></span> 99%ile Target</span>
+        </div>
+      </div>
+      <div class="svg-chart-container">${chartSvg}</div>
+    </div>
+
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Mock #</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th style="text-align:center;">VARC</th>
+            <th style="text-align:center;">DILR</th>
+            <th style="text-align:center;">QA</th>
+            <th style="text-align:center;">Total</th>
+            <th>Est. %ile</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${D.mk.map(m => {
+            const rowScores = S.m[m.n] || ['', '', ''];
+            const tot = getMockTotal(m.n);
+            const est = estimatePercentile(tot);
+            
+            return `
+              <tr>
+                <td><strong>Mock ${m.n}</strong></td>
+                <td>${m.d}</td>
+                <td><span class="tag-badge tag-qa">${m.ty}</span></td>
+                <td style="text-align:center;">
+                  <input type="number" class="table-input" data-mock-num="${m.n}" data-section-idx="0" value="${rowScores[0]}">
+                </td>
+                <td style="text-align:center;">
+                  <input type="number" class="table-input" data-mock-num="${m.n}" data-section-idx="1" value="${rowScores[1]}">
+                </td>
+                <td style="text-align:center;">
+                  <input type="number" class="table-input" data-mock-num="${m.n}" data-section-idx="2" value="${rowScores[2]}">
+                </td>
+                <td style="text-align:center;font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--primary-light);">
+                  ${tot !== null ? tot : '-'}
+                </td>
+                <td style="font-size:12.5px;color:var(--text-muted);">
+                  ${est.p !== '-' ? `<strong>${est.p}</strong> <span style="font-size:11px;color:var(--text-dim);">(${est.tag})</span>` : '-'}
+                </td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+// View: Error Log Vault
+function renderErrorLogView() {
+  const errors = S.errors || [];
+  
+  const sillyCount = errors.filter(e => e.type && e.type.includes('Silly')).length;
+  const conceptCount = errors.filter(e => e.type && e.type.includes('Concept')).length;
+  const timeCount = errors.filter(e => e.type && e.type.includes('Time')).length;
+
+  return `
+    <div class="stats-grid" style="margin-bottom:16px;">
+      <div class="stat-card accent-rose">
+        <div class="stat-header"><span class="stat-title">Total Errors Logged</span></div>
+        <div class="stat-value">${errors.length}</div>
+        <div class="stat-subtitle">Secret weapon for mocks</div>
+      </div>
+      <div class="stat-card accent-amber">
+        <div class="stat-header"><span class="stat-title">Silly Mistakes</span></div>
+        <div class="stat-value">${sillyCount}</div>
+        <div class="stat-subtitle">Calculation / Misread</div>
+      </div>
+      <div class="stat-card accent-purple">
+        <div class="stat-header"><span class="stat-title">Concept Gaps</span></div>
+        <div class="stat-value">${conceptCount}</div>
+        <div class="stat-subtitle">Formulas / Methods</div>
+      </div>
+      <div class="stat-card accent-emerald">
+        <div class="stat-header"><span class="stat-title">Time / Strategy Panic</span></div>
+        <div class="stat-value">${timeCount}</div>
+        <div class="stat-subtitle">Pacing / Set Selection</div>
+      </div>
+    </div>
+
+    <div class="error-log-header">
+      <div class="filter-chips">
+        <button class="filter-chip active" data-err-filter="ALL">All Errors</button>
+        <button class="filter-chip" data-err-filter="QA">Quant</button>
+        <button class="filter-chip" data-err-filter="DILR">LRDI</button>
+        <button class="filter-chip" data-err-filter="VARC">VARC</button>
+      </div>
+      <button id="openAddErrorBtn" class="btn-primary">➕ Log New Error</button>
+    </div>
+
+    <div id="errorCardsContainer" class="error-cards-list">
+      ${errors.length === 0 ? `
+        <div style="text-align:center;padding:48px 16px;background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius-md);">
+          <div style="font-size:32px;margin-bottom:10px;">🎯</div>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:4px;">No Errors Logged Yet</h3>
+          <p style="font-size:13px;color:var(--text-muted);max-width:440px;margin:0 auto 16px;">
+            "If you log every mock error and review it weekly, your score will increase by 20+ percentile points."
+          </p>
+          <button id="emptyLogAddBtn" class="btn-primary">Log First Mistake</button>
+        </div>
+      ` : errors.map((err, idx) => `
+        <div class="error-entry-card">
+          <div class="error-entry-top">
+            <div>
+              <span class="tag-badge ${err.section === 'QA' ? 'tag-qa' : err.section === 'DILR' ? 'tag-dilr' : 'tag-varc'}">${err.section}</span>
+              <strong style="font-size:14.5px;">${err.topic}</strong>
+              <span style="font-size:12px;color:var(--text-dim);margin-left:6px;">(${err.mock})</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="mistake-badge ${err.type.includes('Silly') ? 'mistake-silly' : err.type.includes('Concept') ? 'mistake-concept' : 'mistake-time'}">${err.type}</span>
+              <button class="icon-btn delete-err-btn" data-err-idx="${idx}" style="width:28px;height:28px;font-size:12px;" title="Delete">✕</button>
+            </div>
+          </div>
+          ${err.detail ? `<p style="font-size:13px;color:var(--text-muted);">${err.detail}</p>` : ''}
+          <div style="background:var(--surface-card);border-left:3px solid var(--emerald);padding:8px 12px;border-radius:4px;font-size:13px;">
+            <strong style="color:var(--emerald);">Rule to Remember:</strong> ${err.takeaway}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// View: Formula & Strategy Vault
+function renderVaultView() {
+  return `
+    <div class="strategy-grid">
+      <!-- Quant Essentials -->
+      <div class="formula-card">
+        <h3>📐 Quant: Arithmetic & Algebra Core</h3>
+        <ul>
+          <li><strong>Relative Speed (TSD):</strong> Same direction: <code>|S1 - S2|</code>. Opposite direction: <code>S1 + S2</code>. Average speed for equal distance: <code>2*S1*S2 / (S1 + S2)</code>.</li>
+          <li><strong>Work Rate & Men:</strong> <code>(M1 * D1 * H1) / W1 = (M2 * D2 * H2) / W2</code>. Pipes leak: subtract rate.</li>
+          <li><strong>Mixtures & Removal:</strong> Final concentration = <code>Initial * (1 - x/V)^n</code> where x is removed and replaced n times.</li>
+          <li><strong>Functions:</strong> Odd function: <code>f(-x) = -f(x)</code> (symmetric about origin). Even: <code>f(-x) = f(x)</code> (symmetric about y-axis).</li>
+          <li><strong>Logarithms:</strong> <code>log_b(a) = log(a)/log(b)</code>. Remember: base > 0 and base != 1.</li>
+          <li><strong>Inequalities (Wavy Curve):</strong> Factorize completely. Check roots on number line. Flip sign if multiplying/dividing by negative.</li>
+        </ul>
+      </div>
+
+      <!-- Geometry & Numbers -->
+      <div class="formula-card">
+        <h3>🔺 Quant: Geometry & Numbers</h3>
+        <ul>
+          <li><strong>Triangles:</strong> Area = <code>sqrt(s*(s-a)*(s-b)*(s-c))</code> = <code>r * s</code> (r = inradius) = <code>abc / (4R)</code> (R = circumradius).</li>
+          <li><strong>Centroid (G):</strong> Divides medians in <code>2:1</code>. Apollonius theorem: <code>AB^2 + AC^2 = 2*(AD^2 + BD^2)</code>.</li>
+          <li><strong>Circles:</strong> Tangent-Secant theorem: <code>PT^2 = PA * PB</code>. Intersecting chords: <code>PA * PB = PC * PD</code>.</li>
+          <li><strong>Divisibility & Remainders:</strong> Euler theorem: <code>a^phi(n) = 1 (mod n)</code> if gcd(a,n)=1. For prime p, <code>a^(p-1) = 1 (mod p)</code>.</li>
+          <li><strong>Cyclicity of Units Digit:</strong> 2, 3, 7, 8 have cyclicity 4. 4, 9 have cyclicity 2. 0, 1, 5, 6 have cyclicity 1.</li>
+        </ul>
+      </div>
+
+      <!-- DILR Strategy Matrix -->
+      <div class="formula-card">
+        <h3>🧩 DILR: 4-Step Master Framework</h3>
+        <ul>
+          <li><strong>Step 1 (First 4 Mins):</strong> Scan all 4 sets. Grade them: A (High confidence), B (Doable with work), C (Trap/Messy).</li>
+          <li><strong>Step 2 (Set Selection):</strong> Pick the clearest constraint set first (Venn diagrams, linear arrangements, single matrix).</li>
+          <li><strong>Step 3 (12-Minute Timebox):</strong> If after 6 mins you haven't filled 40% of the grid, switch sets immediately!</li>
+          <li><strong>Venn Diagrams:</strong> Total = <code>A + B + C - (sum of 2s) + (all 3) + Neither</code>. For "Exactly two": <code>(sum of 2s) - 3*(all 3)</code>.</li>
+          <li><strong>Games & Tournaments:</strong> In knockout with N teams, total matches = <code>N - 1</code>. In round-robin: <code>N*(N-1)/2</code>.</li>
+        </ul>
+      </div>
+
+      <!-- VARC Elimination Framework -->
+      <div class="formula-card">
+        <h3>📖 VARC: 5-Filter Elimination</h3>
+        <ul>
+          <li><strong>Filter 1 (Extreme Polarity):</strong> Eliminate options with <code>all, never, completely, universally</code> unless explicitly stated in passage.</li>
+          <li><strong>Filter 2 (Out of Scope):</strong> Option sounds true in the real world, but is NOT mentioned in the text.</li>
+          <li><strong>Filter 3 (Distorted Focus):</strong> Changes author's degree (e.g. from "plausible hypothesis" to "proven fact").</li>
+          <li><strong>Filter 4 (Opposite Meaning):</strong> Reverses causation or correlation.</li>
+          <li><strong>Para-Jumbles:</strong> Find mandatory noun-pronoun pairs, chronological markers (e.g. initially -> subsequently), and broad general statement openers.</li>
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+// View: Why CAT & ROI Matrix
+function renderWhyView() {
+  return `
+    <div class="chart-card">
+      <div class="chart-header">
+        <span class="chart-title">💰 Interactive MBA ROI & Wealth Jump Calculator</span>
+      </div>
+      
+      <div class="slider-container">
+        <div class="slider-label-row">
+          <span>Current Annual Salary (CTC)</span>
+          <span id="lblCurSalary" class="slider-value">₹6.0 LPA</span>
+        </div>
+        <input type="range" id="sliderCurSalary" class="roi-slider" min="3" max="20" step="0.5" value="6">
+      </div>
+
+      <div class="slider-container">
+        <div class="slider-label-row">
+          <span>Target MBA Program Total Cost (Fees + Living)</span>
+          <span id="lblMbaCost" class="slider-value">₹24.0 L</span>
+        </div>
+        <input type="range" id="sliderMbaCost" class="roi-slider" min="10" max="36" step="1" value="24">
+      </div>
+
+      <div class="slider-container">
+        <div class="slider-label-row">
+          <span>Expected Post-MBA Average CTC</span>
+          <span id="lblTargetCtc" class="slider-value">₹32.0 LPA</span>
+        </div>
+        <input type="range" id="sliderTargetCtc" class="roi-slider" min="16" max="45" step="1" value="32">
+      </div>
+
+      <div class="stats-grid" style="margin-top:20px;margin-bottom:0;">
+        <div class="stat-card accent-emerald">
+          <div class="stat-header"><span class="stat-title">Annual Salary Hike</span></div>
+          <div id="resHike" class="stat-value">+₹26.0 L</div>
+          <div class="stat-subtitle">433% jump</div>
+        </div>
+        <div class="stat-card accent-primary">
+          <div class="stat-header"><span class="stat-title">ROI Payback Period</span></div>
+          <div id="resPayback" class="stat-value">1.4 Years</div>
+          <div class="stat-subtitle">Including opportunity cost</div>
+        </div>
+        <div class="stat-card accent-purple">
+          <div class="stat-header"><span class="stat-title">5-Year Net Wealth Gain</span></div>
+          <div id="resGain" class="stat-value">+₹94.0 L</div>
+          <div class="stat-subtitle">Post-MBA wealth creation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-container" style="margin-top:20px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Institute</th>
+            <th>Average CTC</th>
+            <th>Median CTC</th>
+            <th>Batch Size</th>
+            <th>Typical Cutoff</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>IIM Calcutta</strong></td><td style="color:var(--emerald);font-weight:700;">₹36.0 L</td><td>₹35.0 L</td><td>~460</td><td>99.5+ %ile</td></tr>
+          <tr><td><strong>IIM Lucknow</strong></td><td style="color:var(--emerald);font-weight:700;">₹33.2 L</td><td>₹32.9 L</td><td>~500</td><td>99.0+ %ile</td></tr>
+          <tr><td><strong>FMS Delhi</strong></td><td style="color:var(--emerald);font-weight:700;">₹34.1 L</td><td>₹31.0 L</td><td>~250</td><td>99.3+ %ile (ROI King)</td></tr>
+          <tr><td><strong>IIFT Delhi (IB)</strong></td><td style="color:var(--emerald);font-weight:700;">₹31.3 L</td><td>₹26.0 L</td><td>~400</td><td>97.5+ %ile</td></tr>
+          <tr><td><strong>IIT Bombay SJMSOM</strong></td><td style="color:var(--emerald);font-weight:700;">₹28.2 L</td><td>₹26.0 L</td><td>~150</td><td>98.5+ %ile</td></tr>
+          <tr><td><strong>IIM Indore</strong></td><td style="color:var(--emerald);font-weight:700;">₹27.3 L</td><td>₹25.0 L</td><td>~580</td><td>98.0+ %ile</td></tr>
+          <tr><td><strong>New IIMs (Raipur, Trichy, Udaipur)</strong></td><td style="color:var(--emerald);font-weight:700;">₹19.5 - 21.5 L</td><td>₹18.5 L</td><td>~300+</td><td>92 - 96 %ile</td></tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function updateRoiCalculator() {
+  const curSalary = Number($('sliderCurSalary').value);
+  const mbaCost = Number($('sliderMbaCost').value);
+  const targetCtc = Number($('sliderTargetCtc').value);
+  
+  $('lblCurSalary').textContent = `₹${curSalary.toFixed(1)} LPA`;
+  $('lblMbaCost').textContent = `₹${mbaCost.toFixed(1)} L`;
+  $('lblTargetCtc').textContent = `₹${targetCtc.toFixed(1)} LPA`;
+  
+  const annualHike = targetCtc - curSalary;
+  const hikePct = Math.round((annualHike / curSalary) * 100);
+  
+  // Total investment = MBA fees + 2 years of foregone salary
+  const totalInvestment = mbaCost + (curSalary * 2);
+  const paybackYears = (totalInvestment / Math.max(1, annualHike)).toFixed(1);
+  
+  // 5 Year gain after graduation = (annualHike * 5) - totalInvestment
+  const fiveYearGain = (annualHike * 5) - totalInvestment;
+  
+  $('resHike').textContent = `+₹${annualHike.toFixed(1)} L`;
+  $('resHike').nextElementSibling.textContent = `${hikePct}% jump`;
+  $('resPayback').textContent = `${paybackYears} Years`;
+  $('resGain').textContent = `+₹${fiveYearGain.toFixed(1)} L`;
+}
+
+// Render Router
+function renderCurrentView() {
+  const container = $('mainView');
+  
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.v === currentView);
+  });
+  
+  if (currentView === 'today') container.innerHTML = renderTodayView();
+  else if (currentView === 'roadmap') container.innerHTML = renderRoadmapView();
+  else if (currentView === 'backlog') container.innerHTML = renderBacklogView();
+  else if (currentView === 'mocks') container.innerHTML = renderMocksView();
+  else if (currentView === 'errors') container.innerHTML = renderErrorLogView();
+  else if (currentView === 'vault') container.innerHTML = renderVaultView();
+  else if (currentView === 'why') {
+    container.innerHTML = renderWhyView();
+    updateRoiCalculator();
+  }
+}
+
+// Global Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  // Navigation Tabs
+  document.querySelector('.nav-bar').addEventListener('click', e => {
+    const btn = e.target.closest('.nav-tab');
+    if (btn) {
+      currentView = btn.dataset.v;
+      renderCurrentView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  // Main View Click Delegation
+  $('mainView').addEventListener('click', e => {
+    // Prev / Next day buttons
+    if (e.target.closest('#prevDayBtn')) {
+      if (curDayIndex > 0) { curDayIndex--; renderCurrentView(); }
+    } else if (e.target.closest('#nextDayBtn')) {
+      if (curDayIndex < D.days.length - 1) { curDayIndex++; renderCurrentView(); }
+    }
+    
+    // Status Buttons (Done, Partial, Missed)
+    const statusBtn = e.target.closest('button[data-day-status]');
+    if (statusBtn && !statusBtn.disabled) {
+      const day = D.days[curDayIndex];
+      const val = statusBtn.dataset.dayStatus;
+      S.d[day.d] = S.d[day.d] === val ? '' : val;
+      if (S.d[day.d] === 'Done') playChime('success');
+      saveState();
+      renderStats();
+      renderCurrentView();
+    }
+
+    // Practice Task Checklist Toggle
+    const taskItem = e.target.closest('.task-item[data-task-id]');
+    if (taskItem) {
+      const taskId = taskItem.dataset.taskId;
+      S.tasks[taskId] = !S.tasks[taskId];
+      if (S.tasks[taskId]) playChime('success');
+      saveState();
+      renderCurrentView();
+    }
+
+    // Fast Backlog Toggle in Today's View
+    const blFastCheck = e.target.closest('.bl-fast-toggle');
+    if (blFastCheck) {
+      const key = blFastCheck.dataset.blKey;
+      const willBeDone = blFastCheck.checked;
+      S.w[key] = willBeDone;
+      S.s[key] = willBeDone;
+      if (willBeDone) playChime('success');
+      saveState();
+      renderStats();
+      renderCurrentView();
+    }
+
+    // Timer Controls
+    if (e.target.closest('#timerStartBtn')) {
+      if (timerRunning) pauseTimer();
+      else startTimer();
+    } else if (e.target.closest('#timerResetBtn')) {
+      resetTimer();
+    } else if (e.target.closest('button[data-timer]')) {
+      const min = Number(e.target.dataset.timer);
+      resetTimer(min);
+      document.querySelectorAll('.preset-chip').forEach(c => c.classList.toggle('active', c.dataset.timer == min));
+    }
+
+    // Jump from Roadmap to Day
+    const jumpCard = e.target.closest('[data-jump-index]');
+    if (jumpCard) {
+      curDayIndex = Number(jumpCard.dataset.jumpIndex);
+      currentView = 'today';
+      renderCurrentView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Roadmap Phase Filters
+    const phaseBtn = e.target.closest('button[data-phase-filter]');
+    if (phaseBtn) {
+      document.querySelectorAll('button[data-phase-filter]').forEach(b => b.classList.remove('active'));
+      phaseBtn.classList.add('active');
+      const q = $('roadmapSearch') ? $('roadmapSearch').value : '';
+      $('roadmapList').innerHTML = renderRoadmapItems(phaseBtn.dataset.phaseFilter, q);
+    }
+
+    // Backlog Filters
+    const blFilterBtn = e.target.closest('button[data-bl-filter]');
+    if (blFilterBtn) {
+      document.querySelectorAll('button[data-bl-filter]').forEach(b => b.classList.remove('active'));
+      blFilterBtn.classList.add('active');
+      const q = $('backlogSearch') ? $('backlogSearch').value : '';
+      $('backlogTableBody').innerHTML = renderBacklogRows(blFilterBtn.dataset.blFilter, q);
+    }
+
+    // Error Log Delete
+    const delErrBtn = e.target.closest('.delete-err-btn');
+    if (delErrBtn) {
+      const idx = Number(delErrBtn.dataset.errIdx);
+      S.errors.splice(idx, 1);
+      saveState();
+      renderCurrentView();
+      showToast('Error removed from log');
+    }
+
+    // Open Error Modal
+    if (e.target.closest('#openAddErrorBtn') || e.target.closest('#emptyLogAddBtn')) {
+      $('errorModal').classList.add('open');
+    }
+  });
+
+  // Main View Change / Input Delegation
+  $('mainView').addEventListener('input', e => {
+    // Daily Notes Textarea Auto-save
+    if (e.target.id === 'dailyNotesInput') {
+      const day = D.days[curDayIndex];
+      S.notes[day.d] = e.target.value;
+      saveState();
+    }
+
+    // Mock Section Scores Input
+    if (e.target.matches('input[data-mock-num]')) {
+      const mNum = Number(e.target.dataset.mockNum);
+      const sIdx = Number(e.target.dataset.sectionIdx);
+      S.m[mNum] = S.m[mNum] || ['', '', ''];
+      S.m[mNum][sIdx] = e.target.value;
+      saveState();
+      renderStats();
+    }
+
+    // Roadmap Search
+    if (e.target.id === 'roadmapSearch') {
+      const activePhase = document.querySelector('button[data-phase-filter].active')?.dataset.phaseFilter || 'ALL';
+      $('roadmapList').innerHTML = renderRoadmapItems(activePhase, e.target.value);
+    }
+
+    // Backlog Search
+    if (e.target.id === 'backlogSearch') {
+      const activeFilter = document.querySelector('button[data-bl-filter].active')?.dataset.blFilter || 'ALL';
+      $('backlogTableBody').innerHTML = renderBacklogRows(activeFilter, e.target.value);
+    }
+
+    // ROI Sliders
+    if (e.target.matches('.roi-slider')) {
+      updateRoiCalculator();
+    }
+  });
+
+  $('mainView').addEventListener('change', e => {
+    // Backlog Checkbox (Watched & Solved)
+    if (e.target.matches('input[data-bl-action]')) {
+      const action = e.target.dataset.blAction;
+      const code = e.target.dataset.blCode;
+      if (action === 'w') S.w[code] = e.target.checked;
+      if (action === 's') S.s[code] = e.target.checked;
+      if (e.target.checked) playChime('success');
+      saveState();
+      renderStats();
+      const activeFilter = document.querySelector('button[data-bl-filter].active')?.dataset.blFilter || 'ALL';
+      const q = $('backlogSearch') ? $('backlogSearch').value : '';
+      $('backlogTableBody').innerHTML = renderBacklogRows(activeFilter, q);
+    }
+
+    // Re-render mock table when leaving score input
+    if (e.target.matches('input[data-mock-num]')) {
+      renderCurrentView();
+    }
+  });
+
+  // Settings Modal Controls
+  $('syncBadge').addEventListener('click', () => $('settingsModal').classList.add('open'));
+  $('settingsBtn').addEventListener('click', () => $('settingsModal').classList.add('open'));
+  $('closeSettingsBtn').addEventListener('click', () => $('settingsModal').classList.remove('open'));
+  $('closeErrorModalBtn').addEventListener('click', () => $('errorModal').classList.remove('open'));
+  
+  $('passphraseInput').value = KEY;
+  $('saveKeyBtn').addEventListener('click', () => {
+    KEY = $('passphraseInput').value.trim();
+    localStorage.setItem('catkey', KEY);
+    $('settingsModal').classList.remove('open');
+    showToast('🔑 Key saved. Syncing data...');
+    fullSync();
+  });
+
+  $('forcePullBtn').addEventListener('click', async () => {
+    KEY = $('passphraseInput').value.trim();
+    localStorage.setItem('catkey', KEY);
+    await pullCloudData();
+    renderStats();
+    renderCurrentView();
+    $('settingsModal').classList.remove('open');
+  });
+
+  // Export / Import
+  $('exportJsonBtn').addEventListener('click', () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(S, null, 2));
+    const a = document.createElement('a');
+    a.setAttribute("href", dataStr);
+    a.setAttribute("download", `cat_2026_progress_backup_${todayDate}.json`);
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    showToast('📥 Backup exported successfully!');
+  });
+
+  $('importJsonBtn').addEventListener('click', () => $('importFileInput').click());
+  $('importFileInput').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = evt => {
+      try {
+        const imported = JSON.parse(evt.target.result);
+        if (imported) {
+          S = Object.assign(S, imported);
+          saveState();
+          renderStats();
+          renderCurrentView();
+          $('settingsModal').classList.remove('open');
+          showToast('📤 Progress backup restored successfully!');
+        }
+      } catch(err) {
+        alert('Invalid JSON backup file.');
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  $('resetAllBtn').addEventListener('click', () => {
+    if (confirm('Are you sure you want to reset all progress data? This cannot be undone.')) {
+      S = { d: {}, w: {}, s: {}, m: {}, tasks: {}, notes: {}, errors: [], t: Date.now() };
+      saveState();
+      renderStats();
+      renderCurrentView();
+      $('settingsModal').classList.remove('open');
+      showToast('Progress data reset.');
+    }
+  });
+
+  // Add Error Form Submit
+  $('errorForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const newErr = {
+      id: Date.now(),
+      mock: $('errMock').value,
+      section: $('errSection').value,
+      type: $('errType').value,
+      topic: $('errTopic').value.trim(),
+      detail: $('errDetail').value.trim(),
+      takeaway: $('errTakeaway').value.trim(),
+      date: todayDate
+    };
+    S.errors.unshift(newErr);
+    saveState();
+    $('errorModal').classList.remove('open');
+    $('errorForm').reset();
+    showToast('📝 Error logged to your Vault!');
+    renderCurrentView();
+  });
+
+  // Dark / Light Theme Switcher
+  const savedTheme = localStorage.getItem('cat_theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  $('themeToggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  
+  $('themeToggle').addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('cat_theme', next);
+    $('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+
+  // Initial Boot
+  renderStats();
+  renderCurrentView();
+  fullSync();
+
+  // Periodic Auto-Sync and Day Rollover Check
+  setInterval(() => {
+    const t = getTodayStr();
+    if (t !== todayDate) {
+      todayDate = t;
+      fullSync();
+    }
+  }, 30000);
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      todayDate = getTodayStr();
+      fullSync();
+    }
+  });
+});
+</script>
+</body>
+</html>
